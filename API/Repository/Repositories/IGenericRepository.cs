@@ -1,4 +1,5 @@
 ﻿using Repository.Entities;
+using Repository.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,5 +11,8 @@ namespace Repository.Repositories
     {
         Task<T> GetByIdAsync(int id);
         Task<IReadOnlyList<T>> ListAllAsync();
+        Task<T> GetEntityWithSpec(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
+        Task<int> CountAsync(ISpecification<T> spec);
     }
 }

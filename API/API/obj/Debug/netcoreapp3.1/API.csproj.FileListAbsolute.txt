@@ -52,6 +52,8 @@ C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\runtim
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Repository.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Repository.pdb
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
