@@ -6,8 +6,6 @@ using API.Helpers;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Repository.Data;
 using Repository.Entities;
 using Repository.Repositories;
 using Repository.Specifications;
@@ -15,6 +13,7 @@ using Repository.Specifications;
 namespace API.Controllers
 {
     [ApiController]
+
     [Route("api/[controller]")]
 
     public class ProductsController : Controller
