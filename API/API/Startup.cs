@@ -1,3 +1,4 @@
+using API.Extensions;
 using API.Helpers;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -7,34 +8,41 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository.Data;
+using Repository.Data.Identity;
 using Repository.Repositories;
+using Repository.Services;
 using StackExchange.Redis;
 
 namespace API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IConfiguration _config;
+        public Startup(IConfiguration config)
         {
-            Configuration = configuration;
+            _config = config;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfiles));
+
             services.AddControllers();
+            
             services.AddDbContext<AppDbContext>(options =>
-       options.UseSqlServer(Configuration.GetConnectionString("Default"),
+       options.UseSqlServer(_config.GetConnectionString("Default"),
        x => x.MigrationsAssembly("Repository")));
+            services.AddDbContext<AppIdentityDbContext>(options =>
+options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {
-                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"),
+                var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"),
                     true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
@@ -45,6 +53,7 @@ namespace API
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
                 });
             });
+            services.AddIdentityServices(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +68,8 @@ namespace API
             app.UseCors("CorsPolicy");
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

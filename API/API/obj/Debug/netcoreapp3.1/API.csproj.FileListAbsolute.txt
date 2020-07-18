@@ -64,3 +64,16 @@ C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\System
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

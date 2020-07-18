@@ -6,4 +6,3 @@ C:\Users\Darklight\Desktop\MyFinalProject\API\Repository\obj\Debug\netstandard2.
 C:\Users\Darklight\Desktop\MyFinalProject\API\Repository\bin\Debug\netstandard2.0\Repository.pdb
 C:\Users\Darklight\Desktop\MyFinalProject\API\Repository\obj\Debug\netstandard2.0\Repository.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\Repository\obj\Debug\netstandard2.0\Repository.pdb
-C:\Users\Darklight\Desktop\MyFinalProject\API\Repository\obj\Debug\netstandard2.0\Repository.csproj.CoreCompileInputs.cache
