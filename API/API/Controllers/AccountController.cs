@@ -1,5 +1,4 @@
-﻿
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
 using API.Extensions;
@@ -96,6 +95,7 @@ namespace API.Controllers
             {
                 return new BadRequestObjectResult(new ApiValidationErrorResponse { Errors = new[] { "Email address is in use" } });
             }
+
             var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
