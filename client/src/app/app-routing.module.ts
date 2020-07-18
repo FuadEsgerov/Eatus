@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {path:'', component:HomeComponent,data: { breadcrumb: 'Ana Səhifə' }},
   {path:'shop',loadChildren:()=>import('./shop/shop.module').then(mod=>mod.ShopModule),data: { breadcrumb: 'Məhsullar' }},
+  {path:'basket',loadChildren:()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data: { breadcrumb: 'Səbət' }},
   {path:'**',redirectTo:'',pathMatch:'full'}
 
 ];

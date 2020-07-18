@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository.Data;
 using Repository.Repositories;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -29,7 +30,14 @@ namespace API
        options.UseSqlServer(Configuration.GetConnectionString("Default"),
        x => x.MigrationsAssembly("Repository")));
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddSingleton<IConnectionMultiplexer>(c =>
+            {
+                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"),
+                    true);
+                return ConnectionMultiplexer.Connect(configuration);
+            });
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
