@@ -1,42 +1,78 @@
-<div class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top ">
- <img src="/assets/images/logo.png" style="max-height: 50px;" alt="logo" class="logo" [routerLink]="['/']">
- <nav class="my-2 my-md-0 mr-md-3 text-uppercase" style="font-size: larger;">
-    <a class="p-2 " [routerLink]="['/']"routerLinkActive="active"   [routerLinkActiveOptions]="{exact: true}" >Ana Səhifə</a>
-    <a class="p-2 " [routerLink]="['/shop']" routerLinkActive="active" >Menyular</a>
-    <a class="p-2 " href="#">Əlaqə</a>
-    <a class="p-2 " href="#">Faq</a>
-  </nav>
-  <div class="d-flex align-items-center">
-    <a routerLink="/basket" class="position-relative">
-      <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
-      <div *ngIf="(basket$ | async)" class="cart-no">{{(basket$ | async).items.length}}</div>
+<header style="background-color: #626262;" class="header clearfix element_to_stick">
+  <div class="container">
+  <div style="margin-top: 15px;" id="logo">
+    <a [routerLink]="['/']"routerLinkActive="active" >
+      <img src="/assets/img/logo.svg" width="140" height="35" alt="" class="logo_normal">
+      <img src="/assets/img/logo_sticky.svg" width="140" height="35" alt="" class="logo_sticky">
     </a>
-    <ng-container *ngIf="(currentUser$ | async) === null">
-      <a routerLink="/account/login" class="btn btn-outline-secondary mr-2">Login</a>
-      <a routerLink="/account/register" class="btn btn-outline-secondary mr-3">Sign up</a>
-    </ng-container>
-
-    <ng-container *ngIf="currentUser$ | async">
-      <div class="dropdown ml-3 mr-5" dropdown>
-        <a class="dropdown-toggle" style="cursor: pointer" dropdownToggle>
-          <strong>Welcome {{(currentUser$ | async).displayName}}</strong>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
-          <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2">
-            <i class="fa fa-shopping-cart mr-3"></i> View Basket
-          </a>
-          <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
-            <i class="fa fa-history mr-3"></i> View Orders
-          </a>
-          <div class="dropdown-divider"></div>
-          <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
-            <i class="fa fa-sign-out mr-3"></i> Logout
-          </a>
-        </div>
-      </div>
-
-    </ng-container>
-
   </div>
 
+
+  <!-- /top_menu -->
+  <a href="#0" class="open_close">
+    <i class="icon_menu"></i><span>Menu</span>
+  </a>
+  <nav class="main-menu">
+    <div id="header_menu">
+      <a href="#0" class="open_close">
+        <i class="icon_close"></i><span>Menu</span>
+      </a>
+      <a href="index-2.html"><img src="img/logo.svg" width="140" height="35" alt=""></a>
+    </div>
+    <ul>
+      <li class="submenu">
+        <a [routerLink]="['/']"routerLinkActive="active"   [routerLinkActiveOptions]="{exact: true}" >Ana Səhifə</a>
+
+      </li>
+      <li class="submenu">
+        <a  [routerLink]="['/shop']" routerLinkActive="active" >Menyular</a>
+
+      </li>
+
+      <li class="submenu">
+        <a [routerLink]="['/restaurant']" routerLinkActive="active">Restorantlar</a>
+
+      </li>
+      <li class="submenu">
+        <a [routerLink]="['/market']" routerLinkActive="active">Market</a>
+
+      </li>
+      <li>      <a routerLink="/basket" class="position-relative">
+        <i class="fa fa-shopping-cart fa-2x mr-3 p-2 text-white"></i>
+        <div *ngIf="(basket$ | async)" class="cart-no">{{(basket$ | async).items.length}}</div>
+      </a>
+    </li>
+<li>
+
+  <ng-container *ngIf="(currentUser$ | async) === null">
+    <a style="color: whitesmoke;" routerLink="/account/login" class="btn btn-outline-secondary mr-1">Login</a>
+    <a style="color: whitesmoke;" routerLink="/account/register" class="btn btn-outline-secondary mr-1">Sign up</a>
+  </ng-container>
+</li>
+
+<li>
+ <ng-container *ngIf="currentUser$ | async">
+  <div class="dropdown ml-3 mr-5" dropdown>
+    <a class="dropdown-toggle" style="cursor: pointer" dropdownToggle>
+      <strong>Welcome {{(currentUser$ | async).displayName}}</strong>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+      <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2">
+        <i class="fa fa-shopping-cart mr-3"></i> View Basket
+      </a>
+      <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
+        <i class="fa fa-history mr-3"></i> View Orders
+      </a>
+      <div class="dropdown-divider"></div>
+      <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
+        <i class="fa fa-sign-out mr-3"></i> Logout
+      </a>
+    </div>
+  </div>
+
+</ng-container>
+</li>
+    </ul>
+  </nav>
 </div>
+</header>

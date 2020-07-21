@@ -1,21 +1,46 @@
-<div class="d-flex justify-content-center mt-5">
-  <div class="col-3">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div class="text-center mb-4">
-        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+<main class="bg_gray pattern">
+
+  <div class="container margin_60_40">
+      <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <div class="sign_up">
+                  <div class="head">
+                      <div class="title">
+                      <h3>Qeydiyyat</h3>
+                  </div>
+                  </div>
+                  <!-- /head -->
+                  <div class="main">
+                    <a href="#0" class="social_bt facebook">Sign up with Facebook</a>
+            <a href="#0" class="social_bt google">Sign up with Google</a>
+            <div class="divider"><span>Or</span></div>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                      <div class="text-center mb-4">
+                        <h1 class="h3 mb-3 font-weight-normal"></h1>
+                      </div>
+
+                      <app-text-input formControlName="displayName" [label]="'Display Name'"></app-text-input>
+                      <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
+                      <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
+
+                      <ul class="text-danger list-unstyled" *ngIf="errors">
+                          <li *ngFor="let error of errors">
+                              {{error}}
+                          </li>
+                      </ul>
+
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                    </form>
+                  </div>
+              </div>
+              <!-- /box_booking -->
+          </div>
+          <!-- /col -->
+
       </div>
-
-      <app-text-input formControlName="displayName" [label]="'Display Name'"></app-text-input>
-      <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
-      <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
-
-      <ul class="text-danger list-unstyled" *ngIf="errors">
-          <li *ngFor="let error of errors">
-              {{error}}
-          </li>
-      </ul>
-
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    </form>
+      <!-- /row -->
   </div>
-</div>
+  <!-- /container -->
+
+</main>

@@ -3,7 +3,9 @@ using Repository.Data;
 using Repository.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
 namespace Repository.Repositories
@@ -33,6 +35,12 @@ namespace Repository.Repositories
             return await _context.Products.
                 Include(p=>p.ProductBrand).
                 Include(p => p.ProductType).ToListAsync();
+        }
+
+        public async Task<IEnumerable <Product>> GetProductsByBrandIdAsync(int brandId)
+        {
+
+            return await _context.Products.Where(p => p.ProductBrandId == brandId).ToListAsync();
         }
 
         public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()

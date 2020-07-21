@@ -8,11 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
 import {HomeModule} from './home/home.module';
 import{NgxSpinnerModule} from 'ngx-spinner';
+import { MatSliderModule } from '@angular/material/slider';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
 
   ],
   imports: [
@@ -22,6 +26,8 @@ import{NgxSpinnerModule} from 'ngx-spinner';
     HttpClientModule,
     CoreModule,
     HomeModule,
+    MatSliderModule,
+
 
   ],
   providers: [],
