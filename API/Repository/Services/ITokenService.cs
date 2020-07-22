@@ -1,6 +1,6 @@
 ﻿using Repository.Entities.Identity;
 
-namespace Repository.Repositories
+namespace Repository.Services
 {
     public interface ITokenService
     {
