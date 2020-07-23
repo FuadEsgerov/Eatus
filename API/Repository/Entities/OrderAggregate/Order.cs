@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Repository.Entities.OrderAggregate
 {
-   public class Order:BaseEntity
+    public class Order:BaseEntity
     {
         public Order()
         {
