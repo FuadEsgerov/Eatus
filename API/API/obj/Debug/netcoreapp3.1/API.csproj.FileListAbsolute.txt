@@ -77,3 +77,4 @@ C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Micros
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Darklight\Desktop\MyFinalProject\API\API\bin\Debug\netcoreapp3.1\Stripe.net.dll

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rtReLVHU7HMQMgo24p6qwzKXbCQA48mnMpi5zMsafAa3HgdCYQqrXIC8MkSQBzfZymJrgsNBj8STlXQfkLsI0Q==",
+  "dgSpecHash": "oMseU+Agw1DJwxQtFCjIDl6gGpMl0YE9ZUpi/k7naCwxUuD/JhDsgNTubmEYVbQ9QGYH/9cZSPEX0exW4kl4RA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Darklight\\Desktop\\MyFinalProject\\API\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -71,6 +71,7 @@
     "C:\\Users\\Darklight\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Darklight\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Darklight\\.nuget\\packages\\stackexchange.redis\\2.1.58\\stackexchange.redis.2.1.58.nupkg.sha512",
+    "C:\\Users\\Darklight\\.nuget\\packages\\stripe.net\\37.24.0\\stripe.net.37.24.0.nupkg.sha512",
     "C:\\Users\\Darklight\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Darklight\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Darklight\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
