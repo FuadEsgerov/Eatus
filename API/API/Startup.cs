@@ -36,6 +36,7 @@ namespace API
        x => x.MigrationsAssembly("Repository")));
             services.AddDbContext<AppIdentityDbContext>(options =>
 options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
+            services.AddSingleton<IResponseCacheService, ResponseCacheService>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<ITokenService, TokenService>();

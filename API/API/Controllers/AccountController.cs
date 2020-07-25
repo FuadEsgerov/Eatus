@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Entities.Identity;
-using Repository.Repositories;
 using Repository.Services;
 
 namespace API.Controllers

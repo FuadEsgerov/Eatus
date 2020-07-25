@@ -29,6 +29,7 @@ namespace API.Controllers
             _productBrandRepo = productBrandRepo;
             _productsRepo = productsRepo;
         }
+        [Cached(600)]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery] ProductSpecParams productParams)
         {
@@ -47,6 +48,7 @@ namespace API.Controllers
 
 
         }
+        [Cached(600)]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
@@ -65,7 +67,7 @@ namespace API.Controllers
             return Ok(await _productBrandRepo.ListAllAsync());
         }
 
-  
+        [Cached(1000)]
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {
