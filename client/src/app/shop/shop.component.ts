@@ -52,7 +52,7 @@ export class ShopComponent implements OnInit {
 
   getTypes() {
     this.shopService.getTypes().subscribe(response => {
-      this.types = [{ id: 0, name: 'All' }, ...response];
+      this.types = [{ id: 0, name: 'All',image:'All' }, ...response];
     }, error => {
       console.log(error);
     });

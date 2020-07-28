@@ -1,0 +1,25 @@
+<main *ngIf="type">
+  <div>
+    <h1 class="title_category">{{type.name}} </h1>
+  </div>
+  <div class="category_design">
+
+    <div class="card" style="width: 18rem;"*ngFor="let brand of type.brands">
+      <img style="height: 160px;" class="card-img-top" src="{{brand.image}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+{{brand.name}}
+        </h5>
+        <p class="card-text">{{brand.address}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+</main >

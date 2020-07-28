@@ -1,14 +1,14 @@
 .cart-no{
   position: absolute;
-  min-height: 25px;
-  min-width: 25px;
+  min-height: 17px;
+  min-width: 17px;
   border-radius: 50%;
-  font-size: 1em;
+  font-size: 10px;
   background: rgb(240, 127, 86);
   color: white;
   text-align: center;
-  top: -12px;
-  right: 32px;
+  top: 3px;
+  right: 18px;
 }
 a {
   text-decoration: none;
@@ -25,4 +25,8 @@ a {
   &:focus {
       outline: none;
   }
+}
+.dropdown a:after{
+  color: white;
+  display: none;
 }

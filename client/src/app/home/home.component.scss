@@ -1,10 +1,16 @@
-
+main{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 30px 1px;
+  min-height: calc(100vh - 40px);
+}
 .featured {
   height: 250px;
 }
 
 img {
-  object-fit: cover;
+
   height: 500px;
   width: 100%;
 }
+

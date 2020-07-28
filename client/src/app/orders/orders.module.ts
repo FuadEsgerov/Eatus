@@ -4,13 +4,15 @@ import { OrdersComponent } from './orders.component';
 import { OrderDetailedComponent } from './order-detailed/order-detailed.component';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import{CoreModule} from '../core/core.module';
 
 @NgModule({
   declarations: [OrdersComponent, OrderDetailedComponent],
   imports: [
     CommonModule,
     OrdersRoutingModule,
-    SharedModule
+    SharedModule,
+     CoreModule,
   ]
 })
 export class OrdersModule { }

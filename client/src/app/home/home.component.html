@@ -1,108 +1,65 @@
-<main>
-  <div class="hero_single version_2">
-    <div class="opacity-mask" style="background-color: rgba(0, 0, 0, 0.6);" data-opacity-mask="rgba(0, 0, 0, 0.6)">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-9 col-lg-10 col-md-8">
-            <h1>Discover &amp; Book</h1>
-            <p>The best restaurants at the best price</p>
-              <div class="row no-gutters custom-search-input">
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="What are you looking for...">
-                    <i class="icon_search"></i>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <input class="form-control no_border_r" type="text" placeholder="Address, neighborhood...">
-                    <i class="icon_pin_alt"></i>
-                  </div>
-                </div>
-                <div class="col-lg-2">
-                  <input type="submit" value="Search">
-                </div>
-              </div>
-              <!-- /row -->
-
-          </div>
-        </div>
-        <!-- /row -->
-      </div>
-    </div>
-  </div>
+<main >
   <!-- /hero_single -->
 
-  <div class="bg_gray">
-    <div class="container margin_60_40">
-      <div class="main_title center">
-        <span><em></em></span>
-        <h2>Popular Categories</h2>
-        <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
-      </div>
-      <!-- /main_title -->
-      <div class="owl-carousel owl-theme categories_carousel">
-        <div class="item">
-          <a href="#0">
-            <span>98</span>
-            <i class="icon-food_icon_pizza"></i>
-            <h3>Pizza - Italian</h3>
-            <small>Avg price $40</small>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#0">
-            <span>87</span>
-            <i class="icon-food_icon_sushi"></i>
-            <h3>Japanese - Sushi</h3>
-            <small>Avg price $50</small>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#0">
-            <span>96</span>
-            <i class="icon-food_icon_burgher"></i>
-            <h3>Burghers</h3>
-            <small>Avg price $55</small>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#0">
-            <span>78</span>
-            <i class="icon-food_icon_vegetarian"></i>
-            <h3>Vegetarian</h3>
-            <small>Avg price $40</small>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#0">
-            <span>65</span>
-            <i class="icon-food_icon_cake_2"></i>
-            <h3>Bakery</h3>
-            <small>Avg price $60</small>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#0">
-            <span>65</span>
-            <i class="icon-food_icon_chinese"></i>
-            <h3>Chinese</h3>
-            <small>Avg price $40</small>
-          </a>
-        </div>
-        <div class="item">
-          <a href="#0">
-            <span>65</span>
-            <i class="icon-food_icon_burrito"></i>
-            <h3>Mexican</h3>
-            <small>Avg price $35</small>
-          </a>
-        </div>
-      </div>
-      <!-- /carousel -->
-    </div>
-    <!-- /container -->
+    <carousel >
+      <slide>
+          <img src="assets/images/mc.png" alt="McDOnald's" style="display: block; width: 100%;">
+      </slide>
+      <slide>
+          <img src="assets/images/burger.jpg" alt="Burger King" style="display: block; width: 100%;">
+      </slide>
+      <slide>
+          <img src="assets/images/dominos.jpg" alt="Dominos Pizza" style="display: block; width: 100%;">
+      </slide>
+  </carousel>
+
+
+
+  <div style="margin: 30px;" >
+    <h2>
+      Ən Məşhur Restoranlar
+    </h2>
   </div>
+  <owl-carousel-o [options]="customOptions" >
+    <ng-container *ngFor="let brand of brands">
+    <ng-template [id]="brand.id"  carouselSlide>
+
+        <div class="card" >
+          <img  style="height: 160px;" class="card-img-top" src="{{brand.image}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{brand.name}}</h5>
+            <p class="card-text">{{brand.address}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+    </ng-template>
+  </ng-container>
+  </owl-carousel-o>
+
+  <div style="margin: 30px;" >
+    <h2>
+      Kateqoriyalar
+    </h2>
+  </div>
+  <owl-carousel-o [options]="customOptions" >
+
+    <ng-container *ngFor="let type of types">
+      <ng-template [id]="type.id"  carouselSlide>
+        <div class="card" >
+          <a [owlRouterLink]="[type.id]" >
+            <img style="height: 160px;" class="card-img-top" src="{{type.image}}" alt="Card image cap">
+          </a>
+
+          <div class="card-body">
+
+            <p class="card-text">{{type.name}}</p>
+          </div>
+        </div>
+      </ng-template>
+      </ng-container>
+
+  </owl-carousel-o>
   <!-- /bg_gray -->
 
 

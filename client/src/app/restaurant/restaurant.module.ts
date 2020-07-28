@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { BrandComponent } from './brand/brand.component';
 import { BrandItemComponent } from './brand-item/brand-item.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -14,7 +15,8 @@ import { BrandItemComponent } from './brand-item/brand-item.component';
   imports: [
     CommonModule,
     SharedModule,
-    RestaurantRoutingModule
+    RestaurantRoutingModule,
+    CarouselModule,
   ]
 })
 export class RestaurantModule { }
