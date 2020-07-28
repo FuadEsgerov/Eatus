@@ -8,5 +8,6 @@ namespace Repository.Entities
     public class ProductType : BaseEntity
     {
         public string Name { get; set; }
+        public string Image { get; set; }
     }
 }

@@ -2,12 +2,11 @@
 using Repository.Entities;
 using Repository.Entities.OrderAggregate;
 using Repository.Repositories;
+using Repository.Repositories.ShoppingRepositories;
 using Repository.Specifications;
 using Stripe;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 

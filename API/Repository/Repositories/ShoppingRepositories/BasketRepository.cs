@@ -5,8 +5,14 @@ using System.Threading.Tasks;
 using System.Text.Json;
 
 
-namespace Repository.Repositories
+namespace Repository.Repositories.ShoppingRepositories
 {
+    public interface IBasketRepository
+    {
+        Task<CustomerBasket> GetBasketAsync(string basketId);
+        Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket);
+        Task<bool> DeleteBasketAsync(string basketId);
+    }
     public class BasketRepository : IBasketRepository
     {
         private readonly IDatabase _database;

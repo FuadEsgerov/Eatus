@@ -2,30 +2,30 @@
 
 namespace Repository.Migrations
 {
-    public partial class UpdateBrand : Migration
+    public partial class UpdateTypeAndBrand : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Address",
-                table: "ProductBrands",
+                name: "Image",
+                table: "ProductTypes",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Image",
-                table: "ProductBrands",
+                table: "Departments",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Address",
-                table: "ProductBrands");
+                name: "Image",
+                table: "ProductTypes");
 
             migrationBuilder.DropColumn(
                 name: "Image",
-                table: "ProductBrands");
+                table: "Departments");
         }
     }
 }

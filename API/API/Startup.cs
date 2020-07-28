@@ -10,8 +10,10 @@ using Microsoft.Extensions.Hosting;
 using Repository.Data;
 using Repository.Data.Identity;
 using Repository.Repositories;
+using Repository.Repositories.ShoppingRepositories;
 using Repository.Services;
 using StackExchange.Redis;
+
 
 namespace API
 {
@@ -37,7 +39,11 @@ namespace API
             services.AddDbContext<AppIdentityDbContext>(options =>
 options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
+            services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPaymentService, PaymentService>();
@@ -72,6 +78,7 @@ options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
             app.UseCors("CorsPolicy");
 
             app.UseRouting();
+         
 
             app.UseAuthentication();
 
