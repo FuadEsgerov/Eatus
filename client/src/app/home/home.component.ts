@@ -29,14 +29,14 @@ export class HomeComponent implements OnInit {
   brand:IBrand;
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
+    mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
     dots: true,
     margin:25,
     autoHeight:true,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ["<i class='fa fa-long-arrow-left'></i>","<i class='fa fa-long-arrow-right'></i>"],
     responsive: {
       0: {
         items: 1

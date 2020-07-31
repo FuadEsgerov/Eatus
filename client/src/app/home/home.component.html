@@ -1,17 +1,20 @@
-<main >
+<main  >
   <!-- /hero_single -->
-
+<div class="container" >
+  <section class="carousel_desing">
     <carousel >
-      <slide>
-          <img src="assets/images/mc.png" alt="McDOnald's" style="display: block; width: 100%;">
+      <slide  >
+          <img class="d-block w-100 responive_slide"  src="assets/images/mg.jpg" alt="McDOnald's" >
       </slide>
       <slide>
-          <img src="assets/images/burger.jpg" alt="Burger King" style="display: block; width: 100%;">
+          <img class="d-block w-100 responive_slide" src="assets/images/burger.jpg" alt="Burger King" >
       </slide>
       <slide>
-          <img src="assets/images/dominos.jpg" alt="Dominos Pizza" style="display: block; width: 100%;">
+          <img class="d-block w-100 responive_slide"  src="assets/images/pizza.jpg" alt="Dominos Pizza" >
       </slide>
   </carousel>
+  </section>
+
 
 
 
@@ -47,13 +50,14 @@
     <ng-container *ngFor="let type of types">
       <ng-template [id]="type.id"  carouselSlide>
         <div class="card" >
-          <a [owlRouterLink]="[type.id]" >
+
             <img style="height: 160px;" class="card-img-top" src="{{type.image}}" alt="Card image cap">
-          </a>
+
 
           <div class="card-body">
-
+            <a style="cursor: pointer;" [owlRouterLink]="[type.id]" >
             <p class="card-text">{{type.name}}</p>
+          </a>
           </div>
         </div>
       </ng-template>
@@ -61,6 +65,8 @@
 
   </owl-carousel-o>
   <!-- /bg_gray -->
+
+</div>
 
 
 

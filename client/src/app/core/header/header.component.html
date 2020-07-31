@@ -1,0 +1,89 @@
+<div>
+  <mat-toolbar style="padding:30px;" >
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/home">
+      <span>Eatus</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/home">Home</a>
+      <a mat-button routerLink="/shop">Shop</a>
+      <a mat-button routerLink="/restaurant">Restaurant</a>
+      <a mat-button routerLink="/market">Market</a>
+      <a mat-button routerLink="/basket">Basket</a>
+      <a *ngIf="(currentUser$ | async) === null">
+        <a  routerLink="/account/login" class="btn btn-outline-secondary mr-1">Login</a>
+        <a  routerLink="/account/register" class="btn btn-outline-secondary mr-1">Sign up</a>
+      </a>
+      <a *ngIf="currentUser$ | async">
+        <div class="dropdown ml-3 mr-5" style="display: inline-block;" dropdown>
+          <a class="dropdown-toggle" style="cursor: pointer" dropdownToggle>
+            <strong style="color: black;">Welcome {{(currentUser$ | async).displayName}}</strong>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+            <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-shopping-cart mr-3"></i> View Basket
+            </a>
+            <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-history mr-3"></i> View Orders
+            </a>
+            <div class="dropdown-divider"></div>
+            <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-sign-out mr-3"></i> Logout
+            </a>
+          </div>
+        </div>
+
+      </a>
+    </div>
+
+  </mat-toolbar>
+
+<mat-sidenav-container fxFlexFill class="example-container">
+  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+    <div fxLayout="column">
+      <a mat-button routerLink="/home">Home</a>
+      <a mat-button routerLink="/shop">Shop</a>
+      <a mat-button routerLink="/restaurant">Restaurant</a>
+      <a mat-button routerLink="/market">Market</a>
+      <a mat-button routerLink="/basket">Basket</a>
+      <a *ngIf="(currentUser$ | async) === null">
+        <a  routerLink="/account/login" class="btn btn-outline-secondary mr-1">Login</a>
+        <a  routerLink="/account/register" class="btn btn-outline-secondary mr-1">Sign up</a>
+      </a>
+      <a *ngIf="currentUser$ | async">
+        <div class="dropdown ml-3 mr-5" style="display: inline-block; " dropdown>
+          <a class="dropdown-toggle" style="cursor: pointer" dropdownToggle>
+            <strong style="color: black !important;" >Welcome {{(currentUser$ | async).displayName}}</strong>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+            <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-shopping-cart mr-3"></i> View Basket
+            </a>
+            <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-history mr-3"></i> View Orders
+            </a>
+            <div class="dropdown-divider"></div>
+            <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-sign-out mr-3"></i> Logout
+            </a>
+          </div>
+        </div>
+
+      </a>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content fxFlexFill>
+<router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+</div>

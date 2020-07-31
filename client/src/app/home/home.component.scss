@@ -1,9 +1,12 @@
+@import '../variables';
+
 main{
-  max-width: 1200px;
-  margin: 0 auto;
+
   padding: 80px 30px 1px;
-  min-height: calc(100vh - 40px);
+background: url('../../assets/img/pattern_2.svg') repeat;
+
 }
+
 .featured {
   height: 250px;
 }
@@ -14,3 +17,43 @@ img {
   width: 100%;
 }
 
+.container{
+  @include media('<=phone'){
+
+    padding: 0;
+    margin: 0;
+    object-fit: fill;
+  }
+  @include media('<=tablet'){
+
+    object-fit: fill;
+    padding: 0;
+    margin: 0;
+  }
+}
+.responive_slide{
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px 0 rgba(32,33,37,0.06);
+  @include media('<=phone'){
+    height: 200px;
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+    background-color:rgb(0, 0, 0);opacity:0.6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px 0 rgba(32,33,37,0.06);
+  }
+  @include media('<=tablet'){
+    height: 300px;
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+    background-color:rgb(0, 0, 0);opacity:0.6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px 0 rgba(32,33,37,0.06);
+  }
+}
+.card{
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px 0 rgba(32,33,37,0.06) !important;
+}

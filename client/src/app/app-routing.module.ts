@@ -13,6 +13,7 @@ import { CategoryComponent } from './home/category/category.component';
 
 const routes: Routes = [
   { path: 'home',loadChildren:()=>import('./home/home.module').then(mod=>mod.HomeModule),data: { breadcrumb: 'Home' }},
+  { path: '', redirectTo:'/home',pathMatch:'full' },
   { path: 'test-error', component: TestErrorComponent, data: { breadcrumb: 'Test Errors' } },
   { path: 'server-error', component: ServerErrorComponent, data: { breadcrumb: 'Server Error' } },
   { path: 'not-found', component: NotFoundComponent, data: { breadcrumb: 'Not Found' } },

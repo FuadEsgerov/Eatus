@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@562&family=Mansalva&display=swap');
+.companyName{
+  font-size: 150%;
+}
+
+.mat-toolbar{
+height: 7vh;
+}
+
+div {
+  overflow: inherit;
+}
+
+.mat-sidenav-container{
+
+height: 100%;
+}
+
+a{
+  text-decoration: none;
+  font-size: 100%;
+  white-space: normal;
+  color: black;
+  font-family: 'Mansalva', cursive !important;
+
+}
+
+button{
+  font-size: 110%;
+  min-width: min-content;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav-content{
+
+    text-align: center;
+}
