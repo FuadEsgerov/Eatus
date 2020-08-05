@@ -12,8 +12,9 @@ namespace Repository.Repositories
 {
     public interface IProductRepository
     {
-        Task<Product> GetProductByIdAsync(int id);
         Task<IEnumerable<Product>> GetProductsByBrandIdAsync(int brandId);
+        Task<Product> GetProductByIdAsync(int id);
+ 
         Task<IReadOnlyList<Product>> GetProductsAsync();
         Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync();
         Task<IReadOnlyList<ProductType>> GetProductTypesAsync();
@@ -27,6 +28,13 @@ namespace Repository.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<Product>> GetProductsByBrandIdAsync(int brandId)
+        {
+
+            return await _context.Products.Include(p=>p.ProductBrand).Include(p=>p.ProductType).Where(p => p.ProductBrandId == brandId)
+                                    .Where(p => p.Status).ToListAsync();
+
+        }
         public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
         {
             return await _context.ProductBrands.ToListAsync();
@@ -46,11 +54,7 @@ namespace Repository.Repositories
                 Include(p => p.ProductType).ToListAsync();
         }
 
-        public async Task<IEnumerable <Product>> GetProductsByBrandIdAsync(int brandId)
-        {
 
-            return await _context.Products.Where(p => p.ProductBrandId == brandId).ToListAsync();
-        }
 
         public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
         {

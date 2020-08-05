@@ -9,8 +9,6 @@ namespace Repository.Entities
 {
     public class ProductBrand:BaseEntity
     {
-    
-        
         public int DepartmentId { get; set; }
         public string Name { get; set; }
 
@@ -18,6 +16,6 @@ namespace Repository.Entities
 
         public string Address { get; set; }
         public Department Department { get; set; }
-       
+    
     }
 }

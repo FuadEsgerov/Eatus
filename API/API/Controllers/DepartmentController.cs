@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
+using API.Errors;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Entities;
@@ -20,12 +21,15 @@ namespace API.Controllers
 
         private readonly IGenericRepository<Department> _departmentRepo;
         private readonly IDepartmentRepository _departmentRepository;
-        public DepartmentController( IMapper mapper,IGenericRepository<Department> departmentRepo, IDepartmentRepository departmentRepository)
+        private readonly IProductRepository _productRepository;
+
+        public DepartmentController( IMapper mapper,IGenericRepository<Department> departmentRepo, IDepartmentRepository departmentRepository,IProductRepository productRepository)
         {
             _mapper = mapper;
            
             _departmentRepo = departmentRepo;
             _departmentRepository = departmentRepository;
+            _productRepository = productRepository;
 
         }
         [HttpGet("categories")]
@@ -42,9 +46,10 @@ namespace API.Controllers
 
             return Ok(model);
         }
+
+
         [HttpGet("{id}")]
-        
-       public async Task<ActionResult<Department>> GetDepartmentByIdAsync(int id)
+        public async Task<ActionResult<Department>> GetDepartmentByIdAsync(int id)
         {
             var departments = await _departmentRepository.GetDepartmentByIdAsync(id);
 
@@ -52,5 +57,33 @@ namespace API.Controllers
 
             return Ok(model);
         }
+        //[HttpGet("{name}")]
+
+        //public async Task<ActionResult<Department>> GetDepartmentByNameAsync(string name)
+        //{
+        //    var departments = await _departmentRepository.GetDepartmentByNameAsync(name);
+
+        //    var model = _mapper.Map<Department, DepartmentDto>(departments);
+
+        //    return Ok(model);
+        //}
+        [HttpGet("category/{id}")]
+        public async Task<ActionResult<Product>> GetResult(int id)
+        {
+            var brand = await _departmentRepository.GetBrandByIdAsync(id);
+            if (brand == null) return NotFound(new ApiResponse(404));
+            var products = await _productRepository.GetProductsByBrandIdAsync(brand.Id);
+            if (products == null) return NotFound(new ApiResponse(404));
+            var model = new BrandListDto
+            {
+                Brand = _mapper.Map<ProductBrand, BrandDto>(brand),
+                Products = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductToReturnDto>>(products)
+            };
+
+            return Ok(model);
+
+
+        }
+
     }
 }

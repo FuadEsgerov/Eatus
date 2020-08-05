@@ -10,10 +10,10 @@ namespace API.Helpers
     {
         public MappingProfiles()
         {
-       
-                 CreateMap<Product, ProductToReturnDto>()
-                .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
-                .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name));
+
+            CreateMap<Product, ProductToReturnDto>()
+                .ForMember(d => d.Brand, opt => opt.MapFrom(src => src.ProductBrand))
+                 .ForMember(d => d.Type, opt => opt.MapFrom(src => src.ProductType));
             CreateMap<Repository.Entities.Identity.Address, AddressDto>().ReverseMap();
             CreateMap<CustomerBasketDto, CustomerBasket>();
             CreateMap<Department, DepartmentDto>();

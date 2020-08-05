@@ -15,5 +15,6 @@ namespace API.Dtos
 
         public string Address { get; set; }
         public DepartmentDto Department { get; set; }
+        public ProductToReturnDto Products { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Entities;
 using Repository.Repositories;
+using Repository.Repositories.ShoppingRepositories;
 using Repository.Specifications;
 
 namespace API.Controllers
@@ -21,17 +22,19 @@ namespace API.Controllers
         private readonly IGenericRepository<ProductBrand> _productBrandRepo;
         private readonly IGenericRepository<ProductType> _productTypeRepo;
         private readonly IMapper _mapper;
-        public RestaurantController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductBrand> productBrandRepo, IGenericRepository<ProductType> productTypeRepo, IMapper mapper)
+        private readonly IDepartmentRepository _departmentRepository;
+        private readonly IProductRepository _productRepository;
+        public RestaurantController(IGenericRepository<Product> productsRepo,IProductRepository productRepository ,IGenericRepository<ProductBrand> productBrandRepo, IGenericRepository<ProductType> productTypeRepo, IDepartmentRepository departmentRepository, IMapper mapper)
         {
             _mapper = mapper;
             _productTypeRepo = productTypeRepo;
             _productBrandRepo = productBrandRepo;
             _productsRepo = productsRepo;
+            _departmentRepository = departmentRepository;
+            _productRepository = productRepository;
+
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
