@@ -1,3 +1,4 @@
+@import '../variables';
 .list-group-item.active {
   z-index: 2;
   color: #fff;
@@ -6,4 +7,13 @@
 }
 .text-warning {
   color: #F7D08A!important;
+}
+.container{
+  @include media('<=phone'){
+
+  }
+  @include media('<=tablet'){
+
+    width: 970px !important;
+  }
 }

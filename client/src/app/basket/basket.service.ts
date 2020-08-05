@@ -4,8 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { IBasket, IBasketItem, Basket, IBasketTotals } from '../shared/models/basket';
 import { map } from 'rxjs/operators';
-import { IProduct } from '../shared/models/product';
+
 import { IDeliveryMethod } from '../shared/models/deliveryMethod';
+import { IProduct } from '../shared/models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class BasketService {
   shipping = 0;
 
   constructor(private http: HttpClient) { }
-  
+
   createPaymentIntent() {
     return this.http.post(this.baseUrl + 'payments/' + this.getCurrentBasketValue().id, {})
       .pipe(
@@ -151,8 +152,8 @@ export class BasketService {
       price: item.price,
       pictureUrl: item.pictureUrl,
       quantity,
-      brand: item.productBrand,
-      type: item.productType
+      brand: item.brand['name'],
+      type: item.type['name']
     };
   }
 }

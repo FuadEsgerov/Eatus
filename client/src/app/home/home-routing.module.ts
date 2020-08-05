@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import{CategoryComponent} from './category/category.component'
 import { HomeComponent } from './home.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: ':id', component: CategoryComponent},
+  {path: ':id/:id', component: RestaurantComponent},
 
 ];
 @NgModule({

@@ -1,7 +1,8 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { RestaurantService } from './restaurant.service';
+import { HomeService } from '../home.service';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/shared/models/product';
+import { IBrand } from 'src/app/shared/models/brand';
 import { BasketService } from 'src/app/basket/basket.service';
 import { IBrandList } from 'src/app/shared/models/category';
 
@@ -17,7 +18,7 @@ export class RestaurantComponent implements OnInit {
 
 
 
-  constructor(private resService: RestaurantService,
+  constructor(private homeService: HomeService,
     private activateRoute: ActivatedRoute,
     private basketService: BasketService) { }
 
@@ -25,7 +26,7 @@ export class RestaurantComponent implements OnInit {
     this.loadProduct();
   }
   loadProduct() {
-    this.resService.getBrand(+this.activateRoute.snapshot.paramMap.get('id')).subscribe(response => {
+    this.homeService.getBrand(+this.activateRoute.snapshot.paramMap.get('id')).subscribe(response => {
 
     this.brandlist=response;
     }, error => {

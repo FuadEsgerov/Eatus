@@ -1,6 +1,9 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import {HomeService} from "./home.service"
+import { IProduct } from '../shared/models/product';
+import { ShopParams } from '../shared/models/shopParams';
+import { BasketService } from '../basket/basket.service';
 
 export interface IBrand {
   id: number;
@@ -27,6 +30,15 @@ export class HomeComponent implements OnInit {
   types: IType[];
   type:IType;
   brand:IBrand;
+  product :IProduct;
+  products:IProduct[];
+  shopParams = new ShopParams();
+  totalCount: number;
+  sortOptions = [
+    { name: 'Alphabetical', value: 'name' },
+    { name: 'Price: Low to High', value: 'priceAsc' },
+    { name: 'Price: High to Low', value: 'priceDesc' }
+  ];
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -54,12 +66,24 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService,
+    private basketService: BasketService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getBrands();
     this.getTypes();
+    this.getProducts();
 
+  }
+  getProducts() {
+    this.homeService.getProducts(this.shopParams).subscribe(response => {
+      this.products = response.data;
+      this.shopParams.pageNumber = response.pageIndex;
+      this.shopParams.pageSize = response.pageSize;
+      this.totalCount = response.count;
+    }, error => {
+      console.log(error);
+    });
   }
   getBrands() {
     this.homeService.getBrands().subscribe(response => {

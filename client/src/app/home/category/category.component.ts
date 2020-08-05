@@ -3,6 +3,7 @@ import { IBrand } from '../../shared/models/brand';
 import { IType } from 'src/app/shared/models/department';
 import { HomeService } from '../home.service';
 import { ActivatedRoute } from '@angular/router';
+import { IProduct } from 'src/app/shared/models/product';
 
 @Component({
   selector: 'app-category',
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryComponent implements OnInit {
   @Input() type: IType;
+  product:IProduct;
 
 
   constructor(private homeService: HomeService,
@@ -24,10 +26,6 @@ export class CategoryComponent implements OnInit {
     this.homeService.getType(+this.activateRoute.snapshot.paramMap.get('id')).subscribe(brand => {
 
     this.type=brand;
-
-
-
-
     }, error => {
       console.log(error);
     });

@@ -5,17 +5,21 @@ import { SharedModule } from '../shared/shared.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeRoutingModule } from './home-routing.module';
 import { CategoryComponent } from './category/category.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { BasketModule } from '../basket/basket.module';
+
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent,CategoryComponent],
+  declarations: [HomeComponent,CategoryComponent, RestaurantComponent],
   imports: [
     CommonModule,
     SharedModule,
     CarouselModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    BasketModule
   ]
 
 })

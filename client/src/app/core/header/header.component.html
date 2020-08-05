@@ -1,5 +1,5 @@
 <div>
-  <mat-toolbar style="padding:30px;" >
+  <mat-toolbar style="padding:30px;position: sticky;top: 0px;z-index: 1000;" >
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -15,9 +15,16 @@
       <a mat-button routerLink="/shop">Shop</a>
       <a mat-button routerLink="/restaurant">Restaurant</a>
       <a mat-button routerLink="/market">Market</a>
-      <a mat-button routerLink="/basket">Basket</a>
+      <a mat-button routerLink="/basket">
+        <i class="fa fa-shopping-cart fa-2x mr-5 "></i>
+        <div *ngIf="(basket$ | async)" class="cart-no">{{(basket$ | async).items.length}}</div>
+      </a>
       <a *ngIf="(currentUser$ | async) === null">
-        <a  routerLink="/account/login" class="btn btn-outline-secondary mr-1">Login</a>
+        <a  routerLink="/account/login" class="btn btn-outline-secondary mr-1">
+        Sign In
+
+
+        </a>
         <a  routerLink="/account/register" class="btn btn-outline-secondary mr-1">Sign up</a>
       </a>
       <a *ngIf="currentUser$ | async">
@@ -45,7 +52,7 @@
   </mat-toolbar>
 
 <mat-sidenav-container fxFlexFill class="example-container">
-  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+  <mat-sidenav  color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
     <div fxLayout="column">
       <a mat-button routerLink="/home">Home</a>
       <a mat-button routerLink="/shop">Shop</a>
