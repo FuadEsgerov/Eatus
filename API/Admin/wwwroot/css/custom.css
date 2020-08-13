@@ -1,0 +1,62 @@
+﻿.add-option{
+
+}
+
+.options{
+
+}
+
+    .options .option {
+        margin-bottom: 30px;
+        border: 1px solid #9e9e9ea8;
+        padding: 30px;
+        position:relative;
+    }
+
+        .options .option .items {
+            padding-left: 25px;
+        }
+            .options .option .items .option-item {
+                position: relative;
+            }
+
+                .options .option .items .option-item .remove-option-item {
+                    position: absolute;
+                    right: 10px;
+                    top: 0px;
+                    background: #E91E63;
+                    width: 20px;
+                    height: 20px;
+                    color: white;
+                    text-align: center;
+                    line-height: 20px;
+                    border-radius: 50%;
+                    font-size: 13px;
+                    cursor: pointer
+                }
+
+        .options .option .remove-option {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: #E91E63;
+            width: 30px;
+            height: 30px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            cursor: pointer
+        }
+        .options .option .add-option-item {
+            position: absolute;
+            right: 30px;
+            bottom: 10px;
+            background: #4CAF50;
+            width: 30px;
+            height: 30px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+        }

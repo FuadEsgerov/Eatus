@@ -14,11 +14,13 @@ namespace Repository.Repositories.ShoppingRepositories
         Task<ProductBrand> GetBrandByIdAsync(int id);
         Task<IEnumerable<Department>> GetDepartmentsWithCategoryAsync();
         Task<IReadOnlyList<Department>> GetDepartmentsAsync();
-        Task<Department> CreateDepartmentAsync(Department department);
         Task<Department> GetDepartmentByIdAsync(int id);
         Task<Department> GetDepartmentByNameAsync(string name);
+        Department GetDepartmentById(int id);
+        IEnumerable<Department> GetDepartments();
         void UpdateDepartment(Department deparmentToUpdate, Department department);
         void DeleteDepartment(Department department);
+        Department CreateDepartment(Department department);
     }
     public class DepartmentRepository : IDepartmentRepository
     {
@@ -29,19 +31,34 @@ namespace Repository.Repositories.ShoppingRepositories
             _context = context;
         }
 
-        public Task<Department> CreateDepartmentAsync(Department department)
+        public Department CreateDepartment(Department department)
         {
-            throw new NotImplementedException();
+       
+
+            _context.Departments.Add(department);
+
+            _context.SaveChanges();
+
+            return department;
         }
+
+
 
         public void DeleteDepartment(Department department)
         {
-            throw new NotImplementedException();
+            _context.Departments.Remove(department);
+
+            _context.SaveChanges();
         }
 
         public async Task<ProductBrand> GetBrandByIdAsync(int id)
         {
             return await _context.ProductBrands.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public Department GetDepartmentById(int id)
+        {
+            return _context.Departments.Find(id);
         }
 
         public async Task<Department> GetDepartmentByIdAsync(int id)
@@ -52,6 +69,11 @@ namespace Repository.Repositories.ShoppingRepositories
         public async Task<Department> GetDepartmentByNameAsync(string name)
         {
             return await _context.Departments.Include(d => d.Brands).FirstOrDefaultAsync(p => p.Name == name);
+        }
+
+        public IEnumerable<Department> GetDepartments()
+        {
+            return _context.Departments.ToList();
         }
 
         public async Task<IReadOnlyList<Department>> GetDepartmentsAsync()
@@ -74,7 +96,10 @@ namespace Repository.Repositories.ShoppingRepositories
 
         public void UpdateDepartment(Department deparmentToUpdate, Department department)
         {
-            throw new NotImplementedException();
+            deparmentToUpdate.Status = department.Status;
+            deparmentToUpdate.Name = department.Name;
+
+            _context.SaveChanges();
         }
     }
 }

@@ -219,6 +219,39 @@ namespace Repository.Migrations
                     b.ToTable("ProductTypes");
                 });
 
+            modelBuilder.Entity("Repository.Entities.SliderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ActionText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EndPoint")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Slogan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SliderItems");
+                });
+
             modelBuilder.Entity("Repository.Entities.OrderAggregate.Order", b =>
                 {
                     b.HasOne("Repository.Entities.OrderAggregate.DeliveryMethod", "DeliveryMethod")

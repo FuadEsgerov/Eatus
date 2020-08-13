@@ -1,8 +1,10 @@
+using API.Email;
 using API.Extensions;
 using API.Helpers;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,14 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication()
+          .AddGoogle(opts =>
+          {
+              opts.ClientId = "861426078421-9e2gfcdgmlhr06dmjut4o34h9g9b8pev.apps.googleusercontent.com";
+              opts.ClientSecret = "YPWE9WZ4eqME_zWObIsPCWdI";
+              opts.SignInScheme = IdentityConstants.ExternalScheme;
+          });
+
             services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddControllers();
@@ -42,6 +52,9 @@ options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+            // Email Sending Service
+            services.AddSendGridEmailSender();
+
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IBasketRepository, BasketRepository>();
@@ -56,6 +69,7 @@ options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
                     true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
+
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
