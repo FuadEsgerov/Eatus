@@ -1,5 +1,5 @@
 
-<main >
+<main style="background: url('../../assets/img/pattern_2.svg') repeat;" >
 
   <div [ngStyle]="{background: 'url(' + brandlist.brand.image + ')'} " class="hero_in detail_page" style="border-color:rgba(0, 0, 0, 0.5);"  >
     <div class="wrapper opacity-mask" style="background-color: rgba(0, 0, 0, 0.5);">
@@ -22,94 +22,16 @@
   </div>
   <!--/hero_in-->
 
-  <div class="container margin_detail">
-      <div class="row">
-          <div class="col-lg-8">
 
-              <div class="tabs_detail">
-
-                  <div class="tab-content" role="tablist">
-                    <div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
-                          <div class="card-header" role="tab" id="heading-A">
-                              <h5>
-                                  <a class="collapsed" data-toggle="collapse" href="#collapse-A" aria-expanded="true" aria-controls="collapse-A">
-                                      Menu
-                                  </a>
-                              </h5>
-                          </div>
-                          <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
-                              <div class="card-body info_content">
-                                  <h2>{{brandlist.brand.name}} Menu</h2>
-                                  <h3>Starters</h3>
-                                  <p>An malorum ornatus nostrum vel, graece iracundia laboramus cu ius. No pro mazim blandit instructior, sumo voluptaria has et, vide persecuti abhorreant ne est.</p>
-                                  <table class="table table-striped cart-list">
-                    <thead>
-                      <tr>
-                        <th>
-                           Item
-                        </th>
-                        <th>
-                           Price
-                        </th>
-                        <th>
-                           Order
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody  *ngFor="let product of brandlist.products">
-                      <tr [id]=[product.id]>
-                        <td class="d-md-flex align-items-center">
-                                      <figure><img src="{{product.pictureUrl}}"  alt="thumb" class="lazy"></figure>
-                                      <div class="flex-md-column">
-
-                            <h4 style="text-align:initial;">{{product.name}}</h4>
-                            <p>
-                              {{product.description}}
-                            </p>
-                          </div>
-                        </td>
-                        <td>
-                          <strong>{{product.price | currency}}</strong>
-                        </td>
-                        <td class="options">
-                          <div class="d-flex align-items-center justify-content-center hover-overlay">
-                            <button (click)="addItemToBasket()" type="button" class="btn btn-primary fa fa-shopping-cart mr-2"></button>
-                              <button routerLink="/shop/{{product.id}}" type="button" class="btn btn-primary">View</button>
-                          </div>
-                        </td>
-                      </tr>
-
-
-                    </tbody>
-                    </table>
-
-                              </div>
-                          </div>
-                      </div>
-
-                  </div>
-                  <!-- /tab-content -->
-              </div>
-              <!-- /tabs_detail -->
-          </div>
-          <!-- /col -->
-
-          <div class="col-lg-4" id="sidebar_fixed">
-<div>
-  <h1>
-    Səbət
-  </h1>
+<div class="container" style="margin-top: 30px;">
+  <div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4" *ngFor="let item of brandlist.products">
+        <app-product-item [product]="item"></app-product-item>
+    </div>
+  </div>
 </div>
 
-<app-basket-summary>
 
-</app-basket-summary>
-
-          </div>
-
-      </div>
-      <!-- /row -->
-  </div>
   <!-- /container -->
 
 </main>

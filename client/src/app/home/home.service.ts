@@ -24,8 +24,8 @@ export class HomeService {
   getTypes() {
     return this.http.get<IType[]>(this.baseUrl + 'categories');
   }
-  getBrand(id:number) {
-    return this.http.get<IBrandList>(this.baseUrl + 'category/'+ id);
+  getBrand(brandid:number) {
+    return this.http.get<IBrandList>(this.baseUrl + 'category/'+ brandid);
   }
   getProducts(shopParams: ShopParams) {
     let params = new HttpParams();

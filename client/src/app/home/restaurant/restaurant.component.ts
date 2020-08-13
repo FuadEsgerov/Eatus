@@ -5,6 +5,8 @@ import { IProduct } from 'src/app/shared/models/product';
 import { IBrand } from 'src/app/shared/models/brand';
 import { BasketService } from 'src/app/basket/basket.service';
 import { IBrandList } from 'src/app/shared/models/category';
+import { IBasketItem } from 'src/app/shared/models/basket';
+
 
 @Component({
   selector: 'app-restaurant',
@@ -14,13 +16,13 @@ import { IBrandList } from 'src/app/shared/models/category';
 export class RestaurantComponent implements OnInit {
 
   brandlist: IBrandList;
-  product:IProduct
+
 
 
 
   constructor(private homeService: HomeService,
     private activateRoute: ActivatedRoute,
-    private basketService: BasketService) { }
+    private basketService: BasketService,) { }
 
   ngOnInit() {
     this.loadProduct();
@@ -34,7 +36,9 @@ export class RestaurantComponent implements OnInit {
     });
   }
 
-  addItemToBasket() {
-    this.basketService.addItemToBasket(this.product);
+  addItemToBasket(item: IBrandList) {
+    this.basketService.addItemToBasket(item.products);
+    ;
   }
+
 }

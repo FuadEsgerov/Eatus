@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/shared/models/product';
 import { BasketService } from 'src/app/basket/basket.service';
 import { IBrandList } from 'src/app/shared/models/category';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductDetailsComponent } from '../shop/product-details/product-details.component';
 
 @Component({
   selector: 'app-restaurant',
@@ -19,7 +21,8 @@ export class RestaurantComponent implements OnInit {
 
   constructor(private resService: RestaurantService,
     private activateRoute: ActivatedRoute,
-    private basketService: BasketService) { }
+    private basketService: BasketService,
+    private matDialog: MatDialog) { }
 
   ngOnInit() {
     this.loadProduct();
@@ -32,7 +35,9 @@ export class RestaurantComponent implements OnInit {
       console.log(error);
     });
   }
-
+  openViewForm() {
+    this.matDialog.open(ProductDetailsComponent, {width: '500px', height: '450px'});
+  }
   addItemToBasket() {
     this.basketService.addItemToBasket(this.product);
   }

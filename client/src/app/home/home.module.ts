@@ -7,20 +7,23 @@ import { HomeRoutingModule } from './home-routing.module';
 import { CategoryComponent } from './category/category.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { BasketModule } from '../basket/basket.module';
+import { ProductItemComponent } from './restaurant/product-item/product-item.component';
+
 
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent,CategoryComponent, RestaurantComponent],
+  declarations: [HomeComponent,CategoryComponent, RestaurantComponent, ProductItemComponent],
   imports: [
     CommonModule,
     SharedModule,
     CarouselModule,
     HomeRoutingModule,
-    BasketModule
-  ]
+    BasketModule,
+  ],
+
 
 })
 export class HomeModule { }

@@ -27,13 +27,13 @@ export class RegisterComponent implements OnInit {
         [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')],
         [this.validateEmailNotTaken()]
       ],
-      password: [null, [Validators.required]]
+      password: [null, [Validators.required,  Validators.minLength(8),]]
     });
   }
 
   onSubmit() {
     this.accountService.register(this.registerForm.value).subscribe(response => {
-      this.router.navigateByUrl('/shop');
+      this.router.navigateByUrl('/home');
     }, error => {
       console.log(error);
       this.errors = error.errors;

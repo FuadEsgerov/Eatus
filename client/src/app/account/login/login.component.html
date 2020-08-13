@@ -11,10 +11,6 @@
                   </div>
                   <!-- /head -->
                   <div class="main">
-                    <a href="#0" class="social_bt facebook">Sign up with Facebook</a>
-            <a href="#0" class="social_bt google">Sign up with Google</a>
-            <div class="divider"><span>Or</span></div>
-                    <h6>Personal details</h6>
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                       <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
                       <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
@@ -22,6 +18,8 @@
                       <button [disabled]="loginForm.invalid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                     </form>
                   </div>
+                  <div style="margin: 50px;" ></div>
+
               </div>
               <!-- /box_booking -->
           </div>

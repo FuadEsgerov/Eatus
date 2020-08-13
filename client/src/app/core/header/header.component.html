@@ -13,8 +13,6 @@
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/home">Home</a>
       <a mat-button routerLink="/shop">Shop</a>
-      <a mat-button routerLink="/restaurant">Restaurant</a>
-      <a mat-button routerLink="/market">Market</a>
       <a mat-button routerLink="/basket">
         <i class="fa fa-shopping-cart fa-2x mr-5 "></i>
         <div *ngIf="(basket$ | async)" class="cart-no">{{(basket$ | async).items.length}}</div>
@@ -51,13 +49,11 @@
 
   </mat-toolbar>
 
-<mat-sidenav-container fxFlexFill class="example-container">
+<mat-sidenav-container   fxFlexFill class="example-container">
   <mat-sidenav  color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
     <div fxLayout="column">
       <a mat-button routerLink="/home">Home</a>
       <a mat-button routerLink="/shop">Shop</a>
-      <a mat-button routerLink="/restaurant">Restaurant</a>
-      <a mat-button routerLink="/market">Market</a>
       <a mat-button routerLink="/basket">Basket</a>
       <a *ngIf="(currentUser$ | async) === null">
         <a  routerLink="/account/login" class="btn btn-outline-secondary mr-1">Login</a>
@@ -88,6 +84,7 @@
 
   <mat-sidenav-content fxFlexFill>
 <router-outlet></router-outlet>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 

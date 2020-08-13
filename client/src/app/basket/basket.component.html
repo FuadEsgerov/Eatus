@@ -1,8 +1,12 @@
-<app-section-header></app-section-header>
-<div class="container mt-2">
-  <div style="padding: 40px;" *ngIf="(basket$ | async) === null">
-      <p>There are no items in your basket</p>
-      <div style="padding: 100px;"></div>
+
+
+<main style="
+background: url('../../assets/img/pattern_2.svg') repeat;" >
+<div   >
+  <div  style="padding: 40px; background-color: rgb(253, 252, 252);" *ngIf="(basket$ | async) === null">
+    <div style="padding: 100px;"></div>
+   <video autoplay width="100px" height="520px" src="../../assets/video/ufo.mp4"></video>
+     <div style="padding: 120px;"></div>
 
 
   </div>
@@ -37,3 +41,4 @@
       </div>
   </div>
 </div>
+</main>
