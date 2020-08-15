@@ -1,4 +1,5 @@
 @import '../variables';
+
 .list-group-item.active {
   z-index: 2;
   color: #fff;
@@ -11,9 +12,42 @@
 .container{
   @include media('<=phone'){
 
+
   }
   @include media('<=tablet'){
 
     width: 970px !important;
+  }
+}
+
+.responsive-input{
+  @include media('<=phone'){
+    width: 160px !important;
+
+  }
+  @include media('<=tablet'){
+    width: 160px !important;
+
+  }
+
+}
+.list-group-item {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1em;
+
+  &:focus {
+      outline: none;
+  }
+
+  &.active {
+      border-radius: 10px;
+  }
+
+  &:not(.active):hover {
+      color: #fff;
+      background-color: rgba(233, 86, 32, 0.705);
+      border-radius: 10px;
   }
 }

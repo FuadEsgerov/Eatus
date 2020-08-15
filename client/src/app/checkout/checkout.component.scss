@@ -1,0 +1,12 @@
+@import '../variables';
+.responsive-order
+{
+  @include media('<=phone'){
+
+   
+  }
+  @include media('<=tablet'){
+
+
+  }
+}

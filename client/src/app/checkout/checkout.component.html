@@ -1,9 +1,8 @@
-<main style="
-background: url('../../assets/img/pattern_2.svg') repeat;">
+<main >
 
 <div class="container mt-5">
   <div class="row">
-      <div class="col-8">
+      <div class=" col-lg-8 col-md-6 .col-sm-6">
           <app-stepper [linearModeSelected]="true" #appStepper>
               <cdk-step [label]="'Address'" [completed]="(checkoutForm.get('addressForm')).valid">
                   <app-checkout-address [checkoutForm]="checkoutForm"></app-checkout-address>
@@ -20,7 +19,7 @@ background: url('../../assets/img/pattern_2.svg') repeat;">
               </cdk-step>
           </app-stepper>
       </div>
-      <div class="col-4">
+      <div class="col-lg-4 col-md-3 col-sm-3 responsive-order">
           <app-order-totals
               *ngIf="(basketTotals$ | async)"
               [shippingPrice]="(basketTotals$ | async).shipping"

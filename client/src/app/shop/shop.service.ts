@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { IPagination } from '../shared/models/pagination';
+import { IPagination, Pagination } from '../shared/models/pagination';
 import { IBrand } from '../shared/models/brand';
 import { IType } from '../shared/models/productType';
 import { map, delay } from 'rxjs/operators';
@@ -13,6 +13,11 @@ import { IProduct } from '../shared/models/product';
 })
 export class ShopService {
   baseUrl = 'https://localhost:5001/api/';
+  products: IProduct[] = [];
+  brands: IBrand[] = [];
+  types: IType[] = [];
+  pagination = new Pagination();
+  shopParams = new ShopParams();
 
   constructor(private http: HttpClient) { }
   getProduct(id: number) {
@@ -53,5 +58,11 @@ export class ShopService {
 
   getTypes() {
     return this.http.get<IType[]>(this.baseUrl + 'products/types');
+  }
+  setShopParams(params: ShopParams) {
+    this.shopParams = params;
+  }
+  getShopParams() {
+    return this.shopParams;
   }
 }
