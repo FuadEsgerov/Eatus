@@ -13,7 +13,7 @@ namespace Repository.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public string PictureUrl { get; set; }
+        public string Image { get; set; }
         public ProductType ProductType { get; set; }
         public ProductBrand ProductBrand { get; set; }
    

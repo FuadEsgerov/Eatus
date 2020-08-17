@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Admin.Models.Shopping.OrderViewModel>
+@{
+    ViewData["Title"] = "Sifarişlər";
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Sifarişlər</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+
+                            <th>Alıcı</th>
+                            <th>Xərclədiyi Pul</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                           
+                            <th>Alıcı</th>
+                            <th>Xərclədiyi Pul</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+
+
+                            <td>@item.BuyerEmail</td>
+                            <td>@item.Subtotal ₼</td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

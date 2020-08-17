@@ -16,5 +16,6 @@ namespace Admin.Models.Shopping
         [Required(ErrorMessage = "Şöbə adı vacibdir")]
         [MaxLength(50, ErrorMessage = "Şöbə adı maximum 50 xarakter ola bilər")]
         public string Name { get; set; }
+        public string Image { get; set; }
     }
 }

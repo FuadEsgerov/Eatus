@@ -1,0 +1,138 @@
+﻿@model Admin.Models.Shopping.BrandViewModel
+@inject Repository.Services.ICloudinaryService _cloudinaryService
+@{
+    ViewData["Title"] = "Restoranı yenilə";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Restoranı yenilə</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form method="post">
+                <input asp-for="Id" type="hidden" />
+                <div class="form-group">
+                    <label>Vəziyyəti</label>
+                    <div class="custom-control custom-radio custom-control-inline ml-3">
+                        <input type="radio" id="Status" value="true" name="Status" class="custom-control-input" @(Model.Status ? "checked" : "")>
+                        <label class="custom-control-label" for="Status">Aktiv</label>
+                        <span class="field-validation-valid text-danger" asp-validation-for="Status"></span>
+
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="StatusFal" value="false" name="Status" class="custom-control-input" @(Model.Status ? "" : "checked")>
+                        <label class="custom-control-label" for="StatusFal">Passiv</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name">Ad</label>
+                    <input class="form-control form-control-user slug-source" asp-for="Name">
+                    <span class="field-validation-valid" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address">Ünvan</label>
+                    <input class="form-control form-control-user slug-source" asp-for="Address">
+                    <span class="field-validation-valid" asp-validation-for="Address"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Detail">Detal</label>
+                    <input class="form-control form-control-user slug-source" asp-for="Detail">
+                    <span class="field-validation-valid" asp-validation-for="Detail"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartmentId">Şöbə</label>
+                    <select class="form-control form-control-user" asp-for="DepartmentId">
+                        <option value="0" selected disabled>Seçin</option>
+                        @foreach (var item in ViewBag.Departments)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                    <span class="field-validation-valid" asp-validation-for="DepartmentId"></span>
+                </div>
+                <div class="form-group gallery">
+                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkil yüklə</label>
+                    <input type="file" name="files" id="files" multiple="" class="d-none" accept="image/*">
+                    <div class="photos"></div>
+                    <div class="photos">
+
+                        <div class="item">
+                            <input type="hidden" value="" name="Image" />
+                            <input type="hidden" asp-for="Image" />
+                            <img src="@_cloudinaryService.BuildUrl(Model.Image)" />
+                            <a href="#" data-name="@Model.Image" data-id="@Model.Image" class="remove"><i class="fa fa-trash"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-primary btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-pencil-alt"></i>
+                        </span>
+                        <span class="text">Yenilə</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+@section Scripts{
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($("input[name='files']").length) {
+                $("input[name='files']").change(function () {
+                    for (var i = 0; i < this.files.length; i++) {
+                        var formData = new FormData();
+                        formData.append('file', this.files[i]);
+                        $.ajax({
+                            url: '/restaurant/upload',
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            dataType: "json",
+                            success: function (response) {
+                                let index = $(".photos .item").length;
+                                $(".photos").append(`<div class="item" style= "display:flex">
+                                                                    <input type="hidden" value="${ (index + 1)}" name="Photos[${index}]" />
+                                                                    <input type="hidden" value="${response.filename}" name="Image" />
+                                                                    <img src="${ response.src}" style="width:150px"/>
+                                                                    <a href="#" data-name="${  response.filename}" style="color:red" class="remove"><i class="fa fa-trash"></i></a>
+                                                                </div>`);
+                            }
+                        });
+                        break;
+                    }
+                });
+                $(document).on("click", ".photos .remove", function (ev) {
+                    ev.preventDefault();
+                    let elem = $(this).parents(".item");
+                    $.ajax({
+                        url: '/restaurant/remove',
+                        data: {
+                            name: $(this).data("name")
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function (response) {
+                            elem.remove();
+                        }
+                    });
+                });
+            }
+        })
+    </script>
+}

@@ -14,10 +14,17 @@ namespace Repository.Repositories
     {
         Task<IEnumerable<Product>> GetProductsByBrandIdAsync(int brandId);
         Task<Product> GetProductByIdAsync(int id);
- 
         Task<IReadOnlyList<Product>> GetProductsAsync();
         Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync();
         Task<IReadOnlyList<ProductType>> GetProductTypesAsync();
+        //AdminRepo
+        IEnumerable<Product> GetProducts();
+        IEnumerable<ProductType> GetTypes();
+        Product CreateProduct(Product product);
+        Product GetProductById(int id);
+        void UpdateProduct(Product productToUpdate, Product product);
+        void RemovePhotoById(int id);
+        void AddPhoto(Product productPhoto);
     }
 
     public class ProductRepository : IProductRepository
@@ -59,6 +66,56 @@ namespace Repository.Repositories
         public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
         {
             return await _context.ProductTypes.ToListAsync();
+        }
+
+        public IEnumerable<Product> GetProducts()
+        {
+            return _context.Products.ToList();
+        }
+
+        public Product CreateProduct(Product product)
+        {
+            _context.Products.Add(product);
+
+            _context.SaveChanges();
+
+            return product;
+        }
+
+        public Product GetProductById(int id)
+        {
+            return _context.Products.Include(p=>p.ProductBrand).FirstOrDefault(p => p.Status && p.Id == id);
+        }
+
+        public void UpdateProduct(Product productToUpdate, Product product)
+        {
+            productToUpdate.Status = product.Status;
+            productToUpdate.Name = product.Name;
+            productToUpdate.Price = product.Price;
+            productToUpdate.Image = product.Image;
+            productToUpdate.ProductTypeId = product.ProductTypeId;
+            productToUpdate.Description = product.Description;         
+            productToUpdate.ProductBrandId = product.ProductBrandId;
+           }
+
+        public void RemovePhotoById(int id)
+        {
+            Product productPhoto = _context.Products.Find(id);
+
+            _context.Products.Remove(productPhoto);
+
+            _context.SaveChanges();
+        }
+
+        public void AddPhoto(Product productPhoto)
+        {
+            _context.Products.Add(productPhoto);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<ProductType> GetTypes()
+        {
+            return _context.ProductTypes.ToList();
         }
     }
 }

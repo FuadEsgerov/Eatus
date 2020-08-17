@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Admin.Libs;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,8 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository.Data;
 using Repository.Data.Identity;
+using Repository.Repositories;
 using Repository.Repositories.AdminRepository;
 using Repository.Repositories.ShoppingRepositories;
+using Repository.Services;
 
 namespace Admin
 {
@@ -40,6 +43,9 @@ options.UseSqlServer(Configuration.GetConnectionString("DefaultIdentity")));
 
             services.AddTransient<IAdminRepository, AdminRepository>();
             services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddTransient<IFileManager, FileManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

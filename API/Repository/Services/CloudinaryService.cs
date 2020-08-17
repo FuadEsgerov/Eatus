@@ -43,7 +43,7 @@ namespace Repository.Services
             {
                 File = new FileDescription(sourcePath),
                 UniqueFilename = true,
-                Folder = "eatus/",
+                Folder = "Eatus/",
             };
 
             var uploadResult = _cloudinary.Upload(uploadParams);
@@ -58,7 +58,7 @@ namespace Repository.Services
             {
                 File = new FileDescription(sourcePath),
                 UniqueFilename = true,
-                Folder = "jotex/",
+                Folder = "Eatus/",
                 Transformation = new Transformation().Width(width).Height(height).Crop(crop)
             };
 
@@ -85,7 +85,7 @@ namespace Repository.Services
             {
                 File = new FileDescription(url),
                 UniqueFilename = true,
-                Folder = "eatus/"
+                Folder = "Eatus/"
             };
 
             var uploadResult = _cloudinary.Upload(uploadParams);

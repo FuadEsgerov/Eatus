@@ -16,12 +16,15 @@
                 <div class="form-group">
                     <label>Vəziyyəti</label>
                     <div class="custom-control custom-radio custom-control-inline ml-3">
-                        <input type="radio" asp-for="Status" value="true" class="custom-control-input" checked="">
-                        <label class="custom-control-label" asp-for="Status">Aktiv</label>
+                        <input type="radio" id="Status" value="true" name="Status" class="custom-control-input">
+                        <label class="custom-control-label" for="Status">Aktiv</label>
+                        <span class="field-validation-valid text-danger" asp-validation-for="Status"></span>
+
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" asp-for="Status" value="false" class="custom-control-input">
-                        <label class="custom-control-label" asp-for="Status">Passiv</label>
+                        <input type="radio" id="StatusFal" value="false" name="Status" class="custom-control-input">
+                        <label class="custom-control-label" for="StatusFal">Passiv</label>
+
                     </div>
                 </div>
 
@@ -29,6 +32,11 @@
                     <label asp-for="Name">Ad</label>
                     <input class="form-control form-control-user slug-source" asp-for="Name">
                     <span class="field-validation-valid" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group gallery">
+                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkillər yüklə</label>
+                    <input type="file" name="files" id="files" multiple="" class="d-none" accept="image/*">
+                    <div class="photos"></div>
                 </div>
 
                 <div class="form-group d-flex justify-content-end mt-3">
@@ -50,4 +58,49 @@
 @section Scripts{
     <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($("input[name='files']").length) {
+                $("input[name='files']").change(function () {
+                    for (var i = 0; i < this.files.length; i++) {
+                        var formData = new FormData();
+                        formData.append('file', this.files[i]);
+                        $.ajax({
+                            url: '/departments/upload',
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            dataType: "json",
+                            success: function (response) {
+                                let index = $(".photos .item").length;
+                                $(".photos").append(`<div class="item" style= "display:flex">
+                                                                <input type="hidden" value="${ (index + 1)}" name="Photos[${index}]" />
+                                                                <input type="hidden" value="${response.filename}" name="Image" />
+                                                                <img src="${ response.src}" style="width:150px"/>
+                                                                <a href="#" data-name="${  response.filename}" style="color:red" class="remove"><i class="fa fa-trash"></i></a>
+                                                            </div>`);
+                            }
+                        });
+                        break;
+                    }
+                });
+                $(document).on("click", ".photos .remove", function (ev) {
+                    ev.preventDefault();
+                    let elem = $(this).parents(".item");
+                    $.ajax({
+                        url: '/departments/remove',
+                        data: {
+                            name: $(this).data("name")
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function (response) {
+                            elem.remove();
+                        }
+                    });
+                });
+            }
+        })
+    </script>
 }

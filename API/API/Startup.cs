@@ -52,6 +52,7 @@ options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
             // Email Sending Service
             services.AddSendGridEmailSender();
 

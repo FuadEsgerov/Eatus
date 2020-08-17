@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repository.Data;
 using Repository.Entities;
+using Repository.Entities.OrderAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,24 @@ namespace Repository.Repositories.ShoppingRepositories
         Task<IReadOnlyList<Department>> GetDepartmentsAsync();
         Task<Department> GetDepartmentByIdAsync(int id);
         Task<Department> GetDepartmentByNameAsync(string name);
+        //Admin
+        IEnumerable<ProductBrand> GetBrands();
+        ProductBrand CreateBrand(ProductBrand brand);
+        ProductBrand GetBrandById(int id);
+        void UpdateBrand(ProductBrand brandToUpdate, ProductBrand brand);
+        void DeleteBrand(ProductBrand brand);
+        void RemoveBrandPhotoById(int id);
+        void AddPhoto(ProductBrand brandPhoto);
+        //admin department
         Department GetDepartmentById(int id);
         IEnumerable<Department> GetDepartments();
+        IEnumerable<Order> GetOrders();
         void UpdateDepartment(Department deparmentToUpdate, Department department);
         void DeleteDepartment(Department department);
         Department CreateDepartment(Department department);
+        IEnumerable<ProductBrand> GetCategoriesByDepartmentId(int id);
+        void RemovePhotoById(int id);
+        void AddPhoto(Department departmentPhoto);
     }
     public class DepartmentRepository : IDepartmentRepository
     {
@@ -31,10 +45,29 @@ namespace Repository.Repositories.ShoppingRepositories
             _context = context;
         }
 
+        public void AddPhoto(Department departmentPhoto)
+        {
+            _context.Departments.Add(departmentPhoto);
+            _context.SaveChanges();
+        }
+
+        public void AddPhoto(ProductBrand brandPhoto)
+        {
+            _context.ProductBrands.Add(brandPhoto);
+            _context.SaveChanges();
+        }
+
+        public ProductBrand CreateBrand(ProductBrand brand)
+        {
+            _context.ProductBrands.Add(brand);
+
+            _context.SaveChanges();
+
+            return brand;
+        }
+
         public Department CreateDepartment(Department department)
         {
-       
-
             _context.Departments.Add(department);
 
             _context.SaveChanges();
@@ -42,7 +75,12 @@ namespace Repository.Repositories.ShoppingRepositories
             return department;
         }
 
+        public void DeleteBrand(ProductBrand brand)
+        {
+            _context.ProductBrands.Remove(brand);
 
+            _context.SaveChanges();
+        }
 
         public void DeleteDepartment(Department department)
         {
@@ -51,9 +89,24 @@ namespace Repository.Repositories.ShoppingRepositories
             _context.SaveChanges();
         }
 
+        public ProductBrand GetBrandById(int id)
+        {
+            return _context.ProductBrands.Find(id);
+        }
+
         public async Task<ProductBrand> GetBrandByIdAsync(int id)
         {
             return await _context.ProductBrands.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public IEnumerable<ProductBrand> GetBrands()
+        {
+            return _context.ProductBrands.ToList();
+        }
+
+        public IEnumerable<ProductBrand> GetCategoriesByDepartmentId(int id)
+        {
+            return _context.ProductBrands.Where(c => c.Status && c.DepartmentId == id).ToList();
         }
 
         public Department GetDepartmentById(int id)
@@ -89,15 +142,51 @@ namespace Repository.Repositories.ShoppingRepositories
                             .ToListAsync();
         }
 
+        public IEnumerable<Order> GetOrders()
+        {
+            return _context.Orders.ToList();
+        }
+
         public async Task<IEnumerable<Product>> GetProductsByBrandNameAsync(int id)
         {
             return await _context.Products.Where(p => p.ProductBrandId == id).ToListAsync();
+        }
+
+        public void RemoveBrandPhotoById(int id)
+        {
+            ProductBrand brandPhoto = _context.ProductBrands.Find(id);
+
+            _context.ProductBrands.Remove(brandPhoto);
+
+            _context.SaveChanges();
+        }
+
+        public void RemovePhotoById(int id)
+        {
+            Department departmentPhoto = _context.Departments.Find(id);
+
+            _context.Departments.Remove(departmentPhoto);
+
+            _context.SaveChanges();
+        }
+
+        public void UpdateBrand(ProductBrand brandToUpdate, ProductBrand brand)
+        {
+            brandToUpdate.Status = brand.Status;
+            brandToUpdate.Name = brand.Name;
+            brandToUpdate.Image = brand.Image;
+            brandToUpdate.Detail = brand.Detail;
+            brandToUpdate.Address = brand.Address;
+            brandToUpdate.DepartmentId = brand.DepartmentId;
+
+            _context.SaveChanges();
         }
 
         public void UpdateDepartment(Department deparmentToUpdate, Department department)
         {
             deparmentToUpdate.Status = department.Status;
             deparmentToUpdate.Name = department.Name;
+            deparmentToUpdate.Image = department.Image;
 
             _context.SaveChanges();
         }

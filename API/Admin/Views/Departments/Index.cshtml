@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Admin.Models.Shopping.DepartmentViewModel>
+@inject Repository.Services.ICloudinaryService _cloudinaryService
 @{
     ViewData["Title"] = "Şöbələr";
 }
@@ -20,6 +21,7 @@
                         <tr>
                             <th>Vəziyyəti</th>
                             <th>Adı</th>
+                            <th>Şəkli</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -27,35 +29,39 @@
                         <tr>
                             <th>Vəziyyəti</th>
                             <th>Adı</th>
+                            <th>Şəkli</th>
                             <th></th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @if (item.Status)
-                                    {
-                                        <span class="badge badge-success">Aktiv</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-warning">Passiv</span>
-                                    }
-                                </td>
-                                <td>@item.Name</td>
-                                <td class="d-flex justify-content-center">
+                        <tr>
+                            <td>
+                                @if (item.Status)
+                                {
+                                    <span class="badge badge-success">Aktiv</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-warning">Passiv</span>
+                                }
+                            </td>
+                            <td>@item.Name</td>
+                            <td>
+                                <img width="100" src="@_cloudinaryService.BuildUrl(item.Image)" />
+                            </td>
+                            <td class="d-flex justify-content-center">
 
-                                    <a class="btn btn-info btn-circle btn-sm" asp-action="edit" asp-route-id="@item.Id">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
+                                <a class="btn btn-info btn-circle btn-sm" asp-action="edit" asp-route-id="@item.Id">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
 
-                                    <a class="btn btn-danger btn-circle btn-sm ml-2 deleteitem" asp-action="delete" asp-route-id="@item.Id">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                <a class="btn btn-danger btn-circle btn-sm ml-2 deleteitem" asp-action="delete" asp-route-id="@item.Id">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
