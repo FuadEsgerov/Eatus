@@ -151,11 +151,11 @@ export class BasketService {
       id: item.id,
       productName: item.name,
       price: item.price,
-      pictureUrl: item.pictureUrl,
+      image: item.image,
       quantity,
       brand: item.brand['name'],
       type: item.type['name'],
-      
+
     };
   }
 }

@@ -1,7 +1,7 @@
 
 <main >
 
-  <div [ngStyle]="{background: 'url(' + brandlist.brand.image + ')'} " class="hero_in detail_page" style="border-color:rgba(0, 0, 0, 0.5);"  >
+  <div [style.background]="'url(https://res.cloudinary.com/fadarklight/v1/' + brandlist.brand.image+ ')'" class="hero_in detail_page" style="border-color:rgba(0, 0, 0, 0.5);"  >
     <div class="wrapper opacity-mask" style="background-color: rgba(0, 0, 0, 0.5);">
 
       <div class="container">
@@ -59,7 +59,7 @@
                     <tbody  *ngFor="let product of brandlist.products">
                       <tr [id]=[product.id]>
                         <td class="d-md-flex align-items-center">
-                                      <figure><img src="{{product.pictureUrl}}"  alt="thumb" class="lazy"></figure>
+                                      <figure><img src="https://res.cloudinary.com/fadarklight/v1/{{product.image}}"  alt="thumb" class="lazy"></figure>
                                       <div class="flex-md-column">
 
                             <h4 style="text-align:initial;">{{product.name}}</h4>

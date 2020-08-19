@@ -1,7 +1,7 @@
 <main style="
 background: url('../../assets/img/pattern_2.svg') repeat;">
   <div class="card" *ngIf="product" style="width: 20rem; display: inline-flex;margin: 30px; padding: 30px;">
-    <img class="card-img-top" src="{{product.pictureUrl}}" alt="{{product.name}}">
+    <img class="card-img-top" src="https://res.cloudinary.com/fadarklight/v1/{{product.image}}" alt="{{product.name}}">
     <div class="card-body">
       <h5 class="card-title">{{product.name}}</h5>
       <p class="card-text"> <h4>Description</h4>

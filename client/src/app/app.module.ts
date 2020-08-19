@@ -12,12 +12,14 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductDetailsComponent } from './shop/product-details/product-details.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RestaurantComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
