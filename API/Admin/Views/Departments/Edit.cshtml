@@ -1,4 +1,5 @@
 ﻿@model Admin.Models.Shopping.DepartmentViewModel
+@inject Repository.Services.ICloudinaryService _cloudinaryService
 @{
     ViewData["Title"] = "Şöbəni yenilə";
 }
@@ -34,9 +35,18 @@
                     <span class="field-validation-valid" asp-validation-for="Name"></span>
                 </div>
                 <div class="form-group gallery">
-                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkillər yüklə</label>
+                    <label for="files" type="button" id="uploader" class="btn btn-secondary">Şəkil yüklə</label>
                     <input type="file" name="files" id="files" multiple="" class="d-none" accept="image/*">
-                    <div class="photos"></div>
+                    <div class="photos">
+
+                        <div class="item">
+                            <input type="hidden" value="" name="Image" />
+                            <input type="hidden" asp-for="Image" />
+                            <img src="@_cloudinaryService.BuildUrl(Model.Image)" />
+                            <a href="#" data-name="@Model.Image" data-id="@Model.Image" class="remove"><i class="fa fa-trash"></i></a>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="form-group d-flex justify-content-end mt-3">
@@ -75,11 +85,11 @@
                             success: function (response) {
                                 let index = $(".photos .item").length;
                                 $(".photos").append(`<div class="item" style= "display:flex">
-                                                                <input type="hidden" value="${ (index + 1)}" name="Photos[${index}]" />
-                                                                <input type="hidden" value="${response.filename}" name="Image" />
-                                                                <img src="${ response.src}" style="width:150px"/>
-                                                                <a href="#" data-name="${  response.filename}" style="color:red" class="remove"><i class="fa fa-trash"></i></a>
-                                                            </div>`);
+                                                                    <input type="hidden" value="${ (index + 1)}" name="Photos[${index}]" />
+                                                                    <input type="hidden" value="${response.filename}" name="Image" />
+                                                                    <img src="${ response.src}" style="width:150px"/>
+                                                                    <a href="#" data-name="${  response.filename}" style="color:red" class="remove"><i class="fa fa-trash"></i></a>
+                                                                </div>`);
                             }
                         });
                         break;

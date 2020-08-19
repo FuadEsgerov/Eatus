@@ -27,7 +27,8 @@ namespace Admin.Controllers
             DashboardViewModel dashboard = new DashboardViewModel();
 
             dashboard.products_count = _context.Products.Count();
-                
+            dashboard.restaurants_count = _context.ProductBrands.Count();
+
             dashboard.orders_count = _context.Orders.Count();
             dashboard.users_count = _identity.Users.Count();
 

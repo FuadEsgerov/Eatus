@@ -172,3 +172,6 @@ C:\Users\Darklight\Desktop\MyFinalProject\API\Admin\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Darklight\Desktop\MyFinalProject\API\Admin\obj\Debug\netcoreapp3.1\Razor\Views\Restaurant\Index.cshtml.g.cs
 C:\Users\Darklight\Desktop\MyFinalProject\API\Admin\obj\Debug\netcoreapp3.1\Razor\Views\Restaurant\Create.cshtml.g.cs
 C:\Users\Darklight\Desktop\MyFinalProject\API\Admin\obj\Debug\netcoreapp3.1\Razor\Views\Restaurant\Edit.cshtml.g.cs
+C:\Users\Darklight\Desktop\MyFinalProject\API\Admin\obj\Debug\netcoreapp3.1\Razor\Views\Faq\Edit.cshtml.g.cs
+C:\Users\Darklight\Desktop\MyFinalProject\API\Admin\obj\Debug\netcoreapp3.1\Razor\Views\Faq\Create.cshtml.g.cs
+C:\Users\Darklight\Desktop\MyFinalProject\API\Admin\obj\Debug\netcoreapp3.1\Razor\Views\Faq\Index.cshtml.g.cs

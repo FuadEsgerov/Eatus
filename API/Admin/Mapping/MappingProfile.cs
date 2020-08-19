@@ -1,4 +1,5 @@
-﻿using Admin.Models.Shopping;
+﻿using Admin.Models.Pages;
+using Admin.Models.Shopping;
 using AutoMapper;
 using Repository.Entities;
 using Repository.Entities.OrderAggregate;
@@ -21,6 +22,11 @@ namespace Admin.Mapping
             CreateMap<ProductViewModel, Product>();
             CreateMap<Order, OrderViewModel>();
             CreateMap<OrderViewModel, Order>();
+            CreateMap<Faq, FaqViewModel>();
+            CreateMap<FaqViewModel, Faq>();
+            CreateMap<Address, AddressViewModel>(); 
+            CreateMap<AddressViewModel, Address>();
+
 
         }
     }

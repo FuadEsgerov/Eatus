@@ -18,14 +18,16 @@
                         <tr>
 
                             <th>Alıcı</th>
+                            <th>Ünvanı</th>
                             <th>Xərclədiyi Pul</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                           
+
                             <th>Alıcı</th>
+                            <th>Ünvanı</th>
                             <th>Xərclədiyi Pul</th>
                             <th></th>
                         </tr>
@@ -36,7 +38,8 @@
                         <tr>
 
 
-                            <td>@item.BuyerEmail</td>
+                            <td>@item.shipToAddress.FirstName</td>
+                            <td>@item.shipToAddress.Street</td>
                             <td>@item.Subtotal ₼</td>
 
                         </tr>

@@ -37,6 +37,13 @@ namespace API.Controllers
         {
             return Ok(await _departmentRepo.ListAllAsync());
         }
+        [HttpGet("faqs")]
+        public async Task<ActionResult<IEnumerable<Faq>>> GetFaqs()
+              
+        {
+            var faqs = await _departmentRepository.GetFaqs();
+            return Ok(faqs);
+        }
         [HttpGet("categories/restaurants")]
         public async Task<ActionResult<IEnumerable<Department>>> GetDepartmentsWithCategoryAsync()
         {

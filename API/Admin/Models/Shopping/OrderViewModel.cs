@@ -9,5 +9,6 @@ namespace Admin.Models.Shopping
     {
         public string BuyerEmail { get; set; }
         public decimal Subtotal { get; set; }
+        public AddressViewModel shipToAddress { get; set; }
     }
 }

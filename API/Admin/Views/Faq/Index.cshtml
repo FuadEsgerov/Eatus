@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Admin.Models.Pages.FaqViewModel>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Faq</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a asp-action="create" class="m-0 font-weight-bold btn btn-success">Yeni Faq</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Vəziyyəti</th>
+                            <th>Verilən sual</th>
+                            <th>Cavab</th>
+                            <th>Düzəliş</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Vəziyyəti</th>
+                            <th>Verilən sual</th>
+                            <th>Cavab</th>
+                            <th>Düzəliş</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (@item.Status)
+                                    {
+                                        <span class="badge badge-success">Aktive</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Deaktiv</span>
+                                    }
+                                </td>
+                                <td>@item.Question</td>
+                                <td>@item.Answer</td>
+                                <td>
+                                    <a class="btn btn-info btn-circle btn-sm" asp-action="edit" asp-route-id="@item.Id">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-circle btn-sm deleteitem" asp-action="delete" asp-route-id="@item.Id">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

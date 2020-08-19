@@ -25,6 +25,7 @@ namespace Repository.Repositories
         void UpdateProduct(Product productToUpdate, Product product);
         void RemovePhotoById(int id);
         void AddPhoto(Product productPhoto);
+        void DeleteProduct(Product product);
     }
 
     public class ProductRepository : IProductRepository
@@ -84,7 +85,7 @@ namespace Repository.Repositories
 
         public Product GetProductById(int id)
         {
-            return _context.Products.Include(p=>p.ProductBrand).FirstOrDefault(p => p.Status && p.Id == id);
+            return _context.Products.Find(id);
         }
 
         public void UpdateProduct(Product productToUpdate, Product product)
@@ -96,6 +97,7 @@ namespace Repository.Repositories
             productToUpdate.ProductTypeId = product.ProductTypeId;
             productToUpdate.Description = product.Description;         
             productToUpdate.ProductBrandId = product.ProductBrandId;
+        
            }
 
         public void RemovePhotoById(int id)
@@ -116,6 +118,13 @@ namespace Repository.Repositories
         public IEnumerable<ProductType> GetTypes()
         {
             return _context.ProductTypes.ToList();
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            _context.Products.Remove(product);
+
+            _context.SaveChanges();
         }
     }
 }

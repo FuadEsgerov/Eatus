@@ -17,8 +17,10 @@ namespace Repository.Repositories.ShoppingRepositories
         Task<IReadOnlyList<Department>> GetDepartmentsAsync();
         Task<Department> GetDepartmentByIdAsync(int id);
         Task<Department> GetDepartmentByNameAsync(string name);
-        //Admin
+
+        //Admin Restaurantupdate
         IEnumerable<ProductBrand> GetBrands();
+        Task<IEnumerable<Faq>> GetFaqs();
         ProductBrand CreateBrand(ProductBrand brand);
         ProductBrand GetBrandById(int id);
         void UpdateBrand(ProductBrand brandToUpdate, ProductBrand brand);
@@ -142,9 +144,14 @@ namespace Repository.Repositories.ShoppingRepositories
                             .ToListAsync();
         }
 
+        public async Task<IEnumerable<Faq>> GetFaqs()
+        {
+            return await _context.Faqs.ToListAsync();
+        }
+
         public IEnumerable<Order> GetOrders()
         {
-            return _context.Orders.ToList();
+            return _context.Orders.Include(o=>o.ShipToAddress).ToList();
         }
 
         public async Task<IEnumerable<Product>> GetProductsByBrandNameAsync(int id)

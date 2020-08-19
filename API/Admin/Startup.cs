@@ -15,6 +15,7 @@ using Repository.Data;
 using Repository.Data.Identity;
 using Repository.Repositories;
 using Repository.Repositories.AdminRepository;
+using Repository.Repositories.PagesRepository;
 using Repository.Repositories.ShoppingRepositories;
 using Repository.Services;
 
@@ -44,6 +45,7 @@ options.UseSqlServer(Configuration.GetConnectionString("DefaultIdentity")));
             services.AddTransient<IAdminRepository, AdminRepository>();
             services.AddTransient<IDepartmentRepository, DepartmentRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IFaqRepository, FaqRepository>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IFileManager, FileManager>();
         }

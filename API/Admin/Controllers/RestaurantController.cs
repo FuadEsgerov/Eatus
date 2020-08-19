@@ -63,12 +63,14 @@ namespace Admin.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewBag.Departments = _departmentRepository.GetDepartments();
+         
             ProductBrand brand = _departmentRepository.GetBrandById(id);
 
             if (brand == null) return NotFound();
 
             var model = _mapper.Map<ProductBrand, BrandViewModel>(brand);
+
+            ViewBag.Departments = _departmentRepository.GetDepartments();
 
             return View(model);
         }

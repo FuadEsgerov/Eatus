@@ -6,15 +6,15 @@
         {
         }
 
-        public ProductItemOrdered(int productItemId, string productName, string pictureUrl)
+        public ProductItemOrdered(int productItemId, string productName, string image)
         {
             ProductItemId = productItemId;
             ProductName = productName;
-            PictureUrl = pictureUrl;
+            Image = image;
         }
 
         public int ProductItemId { get; set; }
         public string ProductName { get; set; }
-        public string PictureUrl { get; set; }
+        public string Image { get; set; }
     }
 }

@@ -76,7 +76,7 @@ namespace Admin.Controllers
             if (product == null) return NotFound();
 
             var model = _mapper.Map<Product, ProductViewModel>(product);
-
+    
 
             ViewBag.Departments = _departmentRepository.GetDepartments();
             ViewBag.Brands = _departmentRepository.GetCategoriesByDepartmentId(model.DepartmentId);
@@ -102,11 +102,22 @@ namespace Admin.Controllers
 
                 return RedirectToAction("index");
             }
-
             ViewBag.Departments = _departmentRepository.GetDepartments();
             ViewBag.Brands = _departmentRepository.GetCategoriesByDepartmentId(model.DepartmentId);
             ViewBag.Types = _productRepository.GetTypes();
+
             return View(model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Product product = _productRepository.GetProductById(id);
+
+            if (product == null) return NotFound();
+
+            _productRepository.DeleteProduct(product);
+
+            return RedirectToAction("index");
         }
 
         [HttpPost]
