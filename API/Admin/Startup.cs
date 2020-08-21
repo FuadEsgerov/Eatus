@@ -45,6 +45,7 @@ options.UseSqlServer(Configuration.GetConnectionString("DefaultIdentity")));
             services.AddTransient<IAdminRepository, AdminRepository>();
             services.AddTransient<IDepartmentRepository, DepartmentRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ISliderRepository, SliderRepository>();
             services.AddTransient<IFaqRepository, FaqRepository>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IFileManager, FileManager>();

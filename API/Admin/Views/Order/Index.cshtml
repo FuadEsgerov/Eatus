@@ -10,25 +10,24 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-
-                            <th>Alıcı</th>
+                            <th>Adı</th>
+                            <th>Elektron Ünvanı</th>
+                            <th>Ödədiyi pul</th>
                             <th>Ünvanı</th>
-                            <th>Xərclədiyi Pul</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-
-                            <th>Alıcı</th>
+                            <th>Adı</th>
+                            <th>Elektron Ünvanı</th>
+                            <th>Ödədiyi pul</th>
                             <th>Ünvanı</th>
-                            <th>Xərclədiyi Pul</th>
                             <th></th>
                         </tr>
                     </tfoot>
@@ -37,11 +36,21 @@
                         {
                         <tr>
 
-
                             <td>@item.shipToAddress.FirstName</td>
-                            <td>@item.shipToAddress.Street</td>
-                            <td>@item.Subtotal ₼</td>
-
+                            <td>
+                                @item.BuyerEmail
+                            </td>
+                            <td>
+                                @item.Subtotal
+                            </td>
+                            <td>
+                                @item.shipToAddress.Street
+                            </td>
+                            <td class="d-flex justify-content-center">
+                                <a class="btn btn-danger btn-circle btn-sm ml-2 deleteitem" asp-action="delete" asp-route-id="@item.Id">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
                         </tr>
                         }
                     </tbody>
