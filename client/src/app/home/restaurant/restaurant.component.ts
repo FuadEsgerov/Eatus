@@ -26,10 +26,11 @@ export class RestaurantComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: true,
+    dots: false,
     margin:25,
     autoHeight:true,
-    navSpeed: 700,
+    navSpeed: 600,
+    navText: ["<i class='fa fa-long-arrow-left'></i>","<i class='fa fa-long-arrow-right'></i>"],
     responsive: {
       0: {
         items: 1

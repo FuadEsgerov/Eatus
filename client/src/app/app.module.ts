@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductDetailsComponent } from './shop/product-details/product-details.component';
 import { FaqComponent } from './faq/faq.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { OurTeamComponent } from './ourteam/ourteam.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     AppComponent,
     RestaurantComponent,
     FaqComponent,
+   OurTeamComponent,
   ],
   imports: [
     BrowserModule,

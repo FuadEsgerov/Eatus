@@ -3,6 +3,7 @@
 main{
 
   padding: 80px 30px 1px;
+  margin-bottom: 20px;
 background: url('../../assets/img/pattern_2.svg') repeat;
 
 }
@@ -13,7 +14,7 @@ background: url('../../assets/img/pattern_2.svg') repeat;
 
 img {
 
-  height: 500px;
+  height: 530px;
   width: 100%;
 }
 
@@ -32,7 +33,7 @@ img {
   }
 }
 .responive_slide{
-  border-radius: 8px !important;
+
   box-shadow: 0 4px 12px 0 rgba(32,33,37,0.06);
   @include media('<=phone'){
     height: 200px;
@@ -40,7 +41,6 @@ img {
     margin: 0;
     object-fit: cover;
     background-color:rgb(0, 0, 0);opacity:0.6;
-    border-radius: 8px;
     box-shadow: 0 4px 12px 0 rgba(32,33,37,0.06);
   }
   @include media('<=tablet'){
@@ -49,7 +49,7 @@ img {
     padding: 0;
     margin: 0;
     background-color:rgb(0, 0, 0);opacity:0.6;
-    border-radius: 8px;
+
     box-shadow: 0 4px 12px 0 rgba(32,33,37,0.06);
   }
 }

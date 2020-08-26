@@ -1,6 +1,4 @@
-<main  >
-  <!-- /hero_single -->
-<div class="container" >
+
   <section class="carousel_desing">
     <carousel >
       <slide  >
@@ -14,6 +12,11 @@
       </slide>
   </carousel>
   </section>
+<main  >
+  <!-- /hero_single -->
+
+
+<div class="container" >
 
 
 
@@ -28,7 +31,7 @@
     <ng-template [id]="brand.id"  carouselSlide>
 
         <div class="card" >
-          <img  style="height: 160px;" class="card-img-top" src="https://res.cloudinary.com/fadarklight/v1/{{brand.image}}" alt="Card image cap">
+          <img  style="height: 150px;" class="card-img-top" src="https://res.cloudinary.com/fadarklight/v1/{{brand.image}}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{brand.name}}</h5>
             <p class="card-text">{{brand.address}}</p>
@@ -45,13 +48,13 @@
      Categories
     </h2>
   </div>
-  <owl-carousel-o [options]="customOptions" >
+  <owl-carousel-o [options]="departmentOptions" >
 
     <ng-container *ngFor="let type of types">
       <ng-template [id]="type.id"  carouselSlide>
         <div class="card" >
 
-            <img style="height: 160px;" class="card-img-top" src="https://res.cloudinary.com/fadarklight/v1/{{type.image}}" alt="Card image cap">
+            <img style="height: 140px;" class="card-img-top" src="https://res.cloudinary.com/fadarklight/v1/{{type.image}}" alt="Card image cap">
 
 
           <div class="card-body">

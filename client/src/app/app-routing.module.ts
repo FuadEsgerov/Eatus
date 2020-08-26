@@ -9,6 +9,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { CategoryComponent } from './home/category/category.component';
 import { RestaurantComponent } from './home/restaurant/restaurant.component';
 import { FaqComponent } from './faq/faq.component';
+import { OurTeamComponent } from './ourteam/ourteam.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'server-error', component: ServerErrorComponent, data: { breadcrumb: 'Server Error' } },
   { path: 'not-found', component: NotFoundComponent, data: { breadcrumb: 'Not Found' } },
   { path: 'faq', component: FaqComponent, data: { breadcrumb: 'Faq' } },
+  { path: 'ourteam', component: OurTeamComponent, data: { breadcrumb: 'About' } },
   {path:'shop',loadChildren:()=>import('./shop/shop.module').then(mod=>mod.ShopModule),data: { breadcrumb: 'Məhsullar' }},
   {path:'basket',loadChildren:()=>import('./basket/basket.module').then(mod=>mod.BasketModule),data: { breadcrumb: 'Səbət' }},
 

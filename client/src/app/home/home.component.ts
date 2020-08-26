@@ -44,8 +44,8 @@ export class HomeComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: true,
-    margin:25,
+    dots: false,
+    margin:35,
     autoHeight:true,
     navSpeed: 700,
     navText: ["<i class='fa fa-long-arrow-left'></i>","<i class='fa fa-long-arrow-right'></i>"],
@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: true,
+    dots: false,
     margin:25,
     autoHeight:true,
     navSpeed: 700,
@@ -84,10 +84,10 @@ export class HomeComponent implements OnInit {
         items: 2
       },
       768: {
-        items: 3
+        items: 5
       },
       1000: {
-        items: 5
+        items: 6
       }
 
     },
