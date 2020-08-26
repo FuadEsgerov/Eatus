@@ -13,6 +13,7 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProductDetailsComponent } from './shop/product-details/product-details.component';
 import { FaqComponent } from './faq/faq.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FaqComponent } from './faq/faq.component';
     HttpClientModule,
     CoreModule,
     NgxSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    CarouselModule,
 
 
   ],

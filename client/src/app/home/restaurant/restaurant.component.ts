@@ -6,6 +6,9 @@ import { IBrand } from 'src/app/shared/models/brand';
 import { BasketService } from 'src/app/basket/basket.service';
 import { IBrandList } from 'src/app/shared/models/category';
 import { IBasketItem } from 'src/app/shared/models/basket';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { IType } from 'src/app/shared/models/productType';
+import { ShopParams } from 'src/app/shared/models/shopParams';
 
 
 @Component({
@@ -14,9 +17,36 @@ import { IBasketItem } from 'src/app/shared/models/basket';
   styleUrls: ['./restaurant.component.scss']
 })
 export class RestaurantComponent implements OnInit {
-
+  shopParams = new ShopParams();
   brandlist: IBrandList;
+   types :IType[];
 
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    margin:25,
+    autoHeight:true,
+    navSpeed: 700,
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      768: {
+        items: 5
+      },
+      1000: {
+        items: 6
+      }
+
+    },
+    nav: true
+  }
 
 
 
@@ -26,14 +56,26 @@ export class RestaurantComponent implements OnInit {
 
   ngOnInit() {
     this.loadProduct();
+    this.getTypes();
+  }
+  getTypes() {
+    this.homeService.getTypes().subscribe(response => {
+      this.types = [{ id: 0, name: 'All',image:'All' }, ...response];
+    }, error => {
+      console.log(error);
+    });
   }
   loadProduct() {
-    this.homeService.getBrand(+this.activateRoute.snapshot.paramMap.get('id')).subscribe(response => {
+    this.homeService.getBrand( +this.activateRoute.snapshot.paramMap.get('id'),this.shopParams).subscribe(response => {
 
     this.brandlist=response;
     }, error => {
       console.log(error);
     });
+  }
+  onTypeSelected(typeId: number) {
+    this.shopParams.typeId = typeId;
+    this.loadProduct();
   }
 
   addItemToBasket(item: IBrandList) {

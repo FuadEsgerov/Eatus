@@ -3,20 +3,24 @@ import {IBrand} from '../shared/models/brand'
 import { IBrandList } from '../shared/models/category';
 import { IType } from '../shared/models/department';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { IProduct } from '../shared/models/product';
+import { ISlider } from '../shared/models/slider';
 import { IPagination } from '../shared/models/pagination';
 import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
 
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
   getType(id:number) {
     return this.http.get<IType>(this.baseUrl + id );
+  }
+  getSlider(){
+    return this.http.get<ISlider>(this.baseUrl + "slider" );
   }
   getBrands() {
     return this.http.get<IBrand[]>(this.baseUrl + 'products/brands');
@@ -24,27 +28,25 @@ export class HomeService {
   getTypes() {
     return this.http.get<IType[]>(this.baseUrl + 'categories');
   }
-  getBrand(brandid:number) {
-    return this.http.get<IBrandList>(this.baseUrl + 'category/'+ brandid);
+
+  getBrand(brandid:number,shopParams:ShopParams) {
+    let params = new HttpParams();
+    if (shopParams.typeId !== 0) {
+      params = params.append('typeId', shopParams.typeId.toString());
+    }
+    return this.http.get<IBrandList>(this.baseUrl + 'category/'+ brandid,{ observe: 'response', params }) .pipe(
+      map(response => {
+        return response.body;
+      })
+    );
   }
   getProducts(shopParams: ShopParams) {
     let params = new HttpParams();
 
-    if (shopParams.brandId !== 0) {
-      params = params.append('brandId', shopParams.brandId.toString());
-    }
 
     if (shopParams.typeId !== 0) {
       params = params.append('typeId', shopParams.typeId.toString());
     }
-
-    if (shopParams.search) {
-      params = params.append('search', shopParams.search);
-    }
-
-    params = params.append('sort', shopParams.sort);
-    params = params.append('pageIndex', shopParams.pageNumber.toString());
-    params = params.append('pageSize', shopParams.pageSize.toString());
 
     return this.http.get<IPagination>(this.baseUrl + 'products', { observe: 'response', params })
       .pipe(

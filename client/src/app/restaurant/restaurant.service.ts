@@ -7,15 +7,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { IPagination } from '../shared/models/pagination';
 import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
 
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;;
 
   constructor(private http: HttpClient) { }
-  
+
   getType(id:number) {
     return this.http.get<IType>(this.baseUrl + id );
   }

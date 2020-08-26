@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IFaq } from '../shared/models/faq';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class FaqService {
 
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   getFaqs(){

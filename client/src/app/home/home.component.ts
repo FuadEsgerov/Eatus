@@ -56,11 +56,38 @@ export class HomeComponent implements OnInit {
       400: {
         items: 2
       },
-      740: {
+      768: {
         items: 3
       },
       1000: {
         items: 4
+      }
+
+    },
+    nav: true
+  }
+ departmentOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    margin:25,
+    autoHeight:true,
+    navSpeed: 700,
+    navText: ["<i class='fa fa-long-arrow-left'></i>","<i class='fa fa-long-arrow-right'></i>"],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      768: {
+        items: 3
+      },
+      1000: {
+        items: 5
       }
 
     },

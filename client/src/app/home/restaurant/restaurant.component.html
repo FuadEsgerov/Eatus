@@ -21,10 +21,34 @@
     </div>
   </div>
   <!--/hero_in-->
+  <div style="margin: 30px;" >
+    <h2>
+
+    </h2>
+  </div>
+
+
+
 
 <div class="container" style="margin-top: 30px;">
+  <owl-carousel-o [options]="customOptions" >
+    <ng-container *ngFor="let type of types">
+    <ng-template [id]="type.id"  carouselSlide>
+
+
+              <li style="cursor: pointer;" class="list-group-item" [class.active]="type.id === this.shopParams.typeId"
+                  [value]="type.id" (click)="onTypeSelected(type.id)">
+                  {{type.name}}
+              </li>
+
+
+    </ng-template>
+  </ng-container>
+  </owl-carousel-o>
+
   <div class="row">
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mb-4" *ngFor="let item of brandlist.products">
+
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mb-4" *ngFor="let item of brandlist.products">
         <app-product-item [product]="item"></app-product-item>
     </div>
   </div>
