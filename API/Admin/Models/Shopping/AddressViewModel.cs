@@ -7,6 +7,7 @@ namespace Admin.Models.Shopping
 {
     public class AddressViewModel
     {
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Street { get; set; }

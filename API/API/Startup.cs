@@ -1,6 +1,7 @@
 using API.Email;
 using API.Extensions;
 using API.Helpers;
+using API.Middleware;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Repository.Data;
 using Repository.Data.Identity;
@@ -15,7 +17,7 @@ using Repository.Repositories;
 using Repository.Repositories.ShoppingRepositories;
 using Repository.Services;
 using StackExchange.Redis;
-
+using System.IO;
 
 namespace API
 {
@@ -84,16 +86,15 @@ options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseMiddleware<ExceptionMiddleware>();
 
+
+            app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
 
             app.UseRouting();
-         
+            app.UseStaticFiles();
 
             app.UseAuthentication();
 
@@ -102,6 +103,7 @@ options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+              endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

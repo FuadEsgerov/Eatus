@@ -18,6 +18,7 @@ namespace API.Helpers
             CreateMap<CustomerBasketDto, CustomerBasket>();
             CreateMap<Department, DepartmentDto>();
             CreateMap<ProductBrand, BrandDto>();
+            CreateMap<SliderItem, SliderDto>();
             CreateMap<BasketItemDto, BasketItem>();
             CreateMap<AddressDto, Repository.Entities.OrderAggregate.Address>();
             CreateMap<Order, OrderToReturnDto>()
