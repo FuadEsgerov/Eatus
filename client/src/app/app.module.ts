@@ -15,6 +15,8 @@ import { ProductDetailsComponent } from './shop/product-details/product-details.
 import { FaqComponent } from './faq/faq.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OurTeamComponent } from './ourteam/ourteam.component';
+import { AboutComponent } from './about/about.component';
+import { AdvertisementComponent } from './advertisement/advertisement.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { OurTeamComponent } from './ourteam/ourteam.component';
     RestaurantComponent,
     FaqComponent,
    OurTeamComponent,
+   AboutComponent,
+   AdvertisementComponent,
   ],
   imports: [
     BrowserModule,

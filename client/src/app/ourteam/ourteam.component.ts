@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { OurteamService } from './ourteam.service';
+import { IOurTeam } from '../shared/models/ourteam';
 @Component({
   selector: 'app-ourteam',
   templateUrl: './ourteam.component.html',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OurTeamComponent implements OnInit {
 
-  constructor() { }
+  teams: IOurTeam[];
+  constructor(private teamService: OurteamService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getTeam();
+  }
+
+  getTeam() {
+    this.teamService.getTeams().subscribe(response => {
+      this.teams = [ ...response];
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

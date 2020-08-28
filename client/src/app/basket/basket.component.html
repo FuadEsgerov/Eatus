@@ -15,7 +15,7 @@ background: url('../../assets/img/pattern_2.svg') repeat;" >
       <div class="pb-5">
           <div class="container">
               <div class="row">
-                  <div class="col-12 py-5 mb-1">
+                  <div class="col-lg-12 col-sm-6 col-md-3 py-5 mb-1">
                       <app-basket-summary
                           (decrement)="decrementItemQuantity($event)"
                           (increment)="incrementItemQuantity($event)"
@@ -25,7 +25,7 @@ background: url('../../assets/img/pattern_2.svg') repeat;" >
               </div>
 
               <div class="row">
-                  <div class="col-6 offset-6">
+                  <div class=" justify-content-center col-lg-6 col-sm-6 col-md-6 ">
                       <app-order-totals
                           *ngIf="(basketTotals$ | async)"
                           [shippingPrice]="(basketTotals$ | async).shipping"

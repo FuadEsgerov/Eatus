@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Repository.Data;
 using Repository.Data.Identity;
 using Repository.Repositories;
+using Repository.Repositories.PagesRepository;
 using Repository.Repositories.ShoppingRepositories;
 using Repository.Services;
 using StackExchange.Redis;
@@ -65,6 +66,10 @@ options.UseSqlServer(_config.GetConnectionString("DefaultIdentity")));
             services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOurTeamRepository, OurTeamRepository>();
+            services.AddScoped<ISliderRepository, SliderRepository>();
+            services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
+            services.AddScoped<IAboutRepository, AboutRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {

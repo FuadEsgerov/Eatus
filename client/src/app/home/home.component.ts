@@ -4,6 +4,7 @@ import {HomeService} from "./home.service"
 import { IProduct } from '../shared/models/product';
 import { ShopParams } from '../shared/models/shopParams';
 import { BasketService } from '../basket/basket.service';
+import { ISlider } from '../shared/models/slider';
 
 export interface IBrand {
   id: number;
@@ -28,6 +29,7 @@ export interface IType {
 export class HomeComponent implements OnInit {
   brands: IBrand[];
   types: IType[];
+  sliders: ISlider[];
   type:IType;
   brand:IBrand;
   product :IProduct;
@@ -100,6 +102,7 @@ export class HomeComponent implements OnInit {
     this.getBrands();
     this.getTypes();
     this.getProducts();
+    this.getSliders();
 
   }
   getProducts() {
@@ -115,6 +118,13 @@ export class HomeComponent implements OnInit {
   getBrands() {
     this.homeService.getBrands().subscribe(response => {
       this.brands = [ ...response];
+    }, error => {
+      console.log(error);
+    });
+  }
+  getSliders() {
+    this.homeService.getSlider().subscribe(response => {
+      this.sliders = [ ...response];
     }, error => {
       console.log(error);
     });

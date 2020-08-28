@@ -17,6 +17,9 @@ namespace Repository.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
+        public DbSet<OurTeam> OurTeams { get; set; }
+        public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<About> Abouts { get; set; }
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<SliderItem> SliderItems { get; set; }
         public DbSet<Department> Departments { get; set; }

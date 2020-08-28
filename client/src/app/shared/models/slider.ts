@@ -2,5 +2,6 @@ export interface ISlider{
 title:string;
 image:string;
 slogan:string;
-endpoint:string;
+EndPoint:string;
+ActionText:string;
 }

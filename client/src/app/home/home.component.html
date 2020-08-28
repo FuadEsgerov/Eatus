@@ -1,15 +1,15 @@
 
-  <section class="carousel_desing">
-    <carousel >
-      <slide  >
-          <img class="d-block w-100 responive_slide"  src="assets/images/mg.jpg" alt="McDOnald's" >
+  <section  >
+    <carousel  >
+      <slide  *ngFor="let slide of sliders" >
+          <img style="opacity: 0.8;" class="img-fluid d-block w-100 responive_slide"  src="https://res.cloudinary.com/fadarklight/v1/{{slide.image}}" alt="McDOnald's" >
+          <div class="carousel-caption  d-md-block">
+            <h2 style="color: black;">{{slide.title}}</h2>
+            <p style="color: black; ">{{slide.slogan}}</p>
+            <a href="{{slide.EndPoint}}" class="btn btn-lg btn-primary">More</a>
+          </div>
       </slide>
-      <slide>
-          <img class="d-block w-100 responive_slide" src="assets/images/burger.jpg" alt="Burger King" >
-      </slide>
-      <slide>
-          <img class="d-block w-100 responive_slide"  src="assets/images/pizza.jpg" alt="Dominos Pizza" >
-      </slide>
+
   </carousel>
   </section>
 <main  >

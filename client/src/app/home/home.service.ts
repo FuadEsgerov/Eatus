@@ -20,7 +20,7 @@ export class HomeService {
     return this.http.get<IType>(this.baseUrl + id );
   }
   getSlider(){
-    return this.http.get<ISlider>(this.baseUrl + "slider" );
+    return this.http.get<ISlider[]>(this.baseUrl + "slider" );
   }
   getBrands() {
     return this.http.get<IBrand[]>(this.baseUrl + 'products/brands');
